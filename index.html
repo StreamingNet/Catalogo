@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Ecuador | Catálogo Completo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0a335f;
+            --brand-hover: #0251a2;
+            --bg-color: #f5f5f5;
+            --text-color: #4f5258;
+            --whatsapp-green: #25D366;
+            --unavailable: #f44336;
+            --discount-color: #ff6600;
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            font-family: 'Lato', sans-serif; 
+            color: var(--text-color);
+        }
+        
+        .navbar-custom { 
+            background-color: var(--brand-blue); 
+            color: white; 
+            padding: 15px; 
+            text-align: center; 
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; 
+            font-size: 1.5rem; 
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .sidebar-menu {
+            position: sticky;
+            top: 80px; 
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 15px;
+        }
+
+        .menu-btn {
+            text-align: left;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .menu-btn:hover, .menu-btn.active {
+            background-color: var(--brand-blue);
+            color: white;
+            border-color: var(--brand-blue);
+        }
+
+        .section-title { 
+            margin: 0 0 20px 0; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            color: #333; 
+            font-size: 1.4rem;
+            border-bottom: 3px solid var(--brand-blue);
+            display: inline-block;
+            padding-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .card-product { 
+            border: none; 
+            border-radius: 12px; 
+            background: white; 
+            transition: all 0.3s ease; 
+            padding: 0; 
+            text-align: center; 
+            height: 100%; 
+            position: relative; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; 
+        }
+        
+        .card-product:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            border: 1px solid var(--brand-blue);
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 160px; 
+            object-fit: contain; 
+            background-color: #fff;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .card-body-custom {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .duracion-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(10, 51, 95, 0.08); 
+            color: var(--brand-blue); 
+            border: 1px solid rgba(10, 51, 95, 0.15); 
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: center;
+            transition: all 0.3s ease;
+        }
+        
+        .duracion-tag svg { margin-right: 5px; width: 13px; height: 13px; }
+        .card-product:hover .duracion-tag { background-color: var(--brand-blue); color: white; }
+
+        .service-name { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem; 
+            color: #000; 
+            margin-bottom: 5px; 
+            font-weight: 700; 
+            line-height: 1.2;
+        }
+
+        .price-container { margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 8px;}
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .price-tag { 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            color: var(--brand-blue); 
+        }
+        
+        .card-agotado { opacity: 0.7; pointer-events: none; }
+        
+        .badge-stock { 
+            position: absolute; 
+            top: 10px; 
+            left: 10px; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            color: white; 
+            background-color: var(--unavailable);
+            z-index: 10;
+        }
+
+        .badge-ahorro {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: white;
+            background-color: var(--discount-color);
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(255, 102, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-buy-large {
+            background-color: var(--whatsapp-green); 
+            color: white; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            font-size: 1.2rem;
+            padding: 12px 20px; 
+            width: 100%; 
+            border: none; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        .btn-buy-large:hover { background-color: #20b858; color: white; }
+
+        .payment-method-btn {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 15px;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+            transition: 0.2s;
+        }
+        .payment-method-btn:hover {
+            border-color: var(--brand-blue);
+            background-color: #f0f8ff;
+        }
+        .payment-icon { font-size: 1.5rem; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { background-color: #20b858; transform: scale(1.1); color: white;}
+        .whatsapp-icon { width: 40px; height: 40px; }
+
+        /* === MEJORA VISUAL PARA CELULARES === */
+        @media (max-width: 768px) {
+            .sidebar-menu {
+                flex-direction: row;
+                flex-wrap: wrap; /* Esto hace que los botones bajen si no caben */
+                justify-content: center; /* Los centra bonito en la pantalla */
+                padding-bottom: 15px;
+                padding-right: 0;
+                top: 60px; 
+                background-color: var(--bg-color);
+                z-index: 900;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 20px;
+            }
+            .menu-btn { 
+                flex: 0 1 auto; /* Se ajustan al tamaño de su texto */
+                padding: 8px 12px; 
+                font-size: 0.85rem; 
+                text-align: center;
+            }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+            .whatsapp-icon { width: 30px; height: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar-custom">PREMIUM ECUADOR</div>
+
+    <div class="container-fluid" style="max-width: 1400px; padding-top: 20px; padding-bottom: 50px;">
+        <div class="row">
+            
+            <div class="col-md-4 col-lg-3">
+                <div class="sidebar-menu" id="menu-categorias"></div>
+            </div>
+
+            <div class="col-md-8 col-lg-9">
+                <h2 class="section-title" id="titulo-categoria-activa">Catálogo</h2>
+                <div class="row g-3" id="contenedor-productos"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-0 px-4 pb-4">
+                    <img id="modal-img" src="" style="max-height: 160px; object-fit: contain; margin-bottom: 10px;">
+                    
+                    <div id="modal-duracion" class="duracion-tag" style="font-size: 0.9rem; margin-bottom: 15px; pointer-events: none;"></div>
+                    
+                    <h3 id="modal-title" class="service-name" style="font-size: 1.6rem; margin-bottom: 5px;"></h3>
+                    <div id="modal-cat" style="color: #888; font-size: 0.9rem; margin-bottom: 15px;"></div>
+                    
+                    <div class="price-container" style="justify-content: center; gap: 15px; margin-bottom: 10px;">
+                        <span id="modal-old-price" class="old-price" style="font-size: 1.3rem;"></span>
+                        <span class="price-tag" id="modal-price" style="font-size: 2.2rem;"></span>
+                    </div>
+                    <div id="modal-ahorro-badge" style="display: none; background-color: var(--discount-color); color: white; padding: 4px 15px; border-radius: 20px; font-weight: bold; margin: 0 auto 20px auto; width: fit-content; box-shadow: 0 2px 5px rgba(255, 102, 0, 0.4);"></div>
+                    
+                    <button class="btn-buy-large mb-4" onclick="abrirModalPago()">¡COMPRAR AHORA!</button>
+                    
+                    <div class="text-start p-3" style="background-color: #f8f9fa; border-radius: 8px;">
+                        <h5 style="font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--brand-blue);">Descripción y Garantía:</h5>
+                        <p id="modal-desc" style="font-size: 0.90rem; color: #555; margin-bottom: 0; white-space: pre-line; line-height: 1.5;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" style="font-family: 'Poppins', sans-serif; font-weight: 600;">¿Cómo deseas pagar?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="contenedor-metodos"></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="whatsapp-float" id="btn-whatsapp-general" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const miNumero = "593987654321"; // <--- PON TU NÚMERO DE WHATSAPP AQUÍ
+
+        const metodosDePago = [
+            { nombre: "Banco Pichincha", icono: "🏦" },
+            { nombre: "Banco Guayaquil", icono: "🏦" },
+            { nombre: "DeUna!", icono: "📱" },
+            { nombre: "Binance (USDT)", icono: "🟡" }
+        ];
+
+        const terminosGarantia = "\n\n✅ Tiempo garantizado: Tu membresía está 100% cubierta por el tiempo contratado.\n⚠️ Aviso: Al ser servicios digitales, pueden presentar caídas o errores temporales que demoran un tiempo en solucionarse. Agradecemos tu paciencia.\n🔒 REGLA ESTRICTA: Utiliza ÚNICAMENTE el perfil y acceso que se te entregó. Modificar datos o usar otros perfiles anulará tu garantía.\n♻️ Soporte: Por motivos de caídas o compatibilidad, es posible que te entreguemos nuevos datos de acceso para garantizar que cumplas tus días de servicio.";
+
+        const img = {
+            netflix: "https://espremium.ec/wp-content/uploads/2024/05/14-1.png",
+            disney: "https://espremium.ec/wp-content/uploads/2025/06/1.png",
+            disneyEstandar: "https://espremium.ec/wp-content/uploads/2024/06/Post-de-Instagram-Vertical-Manicura-Profesional-Crema-4.png",
+            prime: "https://espremium.ec/wp-content/uploads/2024/06/6.png",
+            hbo: "https://espremium.ec/wp-content/uploads/2024/06/4-1.png",
+            youtube: "https://espremium.ec/wp-content/uploads/2024/06/14.png",
+            spotify: "https://espremium.ec/wp-content/uploads/2024/06/15.png",
+            crunchyroll: "https://espremium.ec/wp-content/uploads/2024/06/4-3.png",
+            plex: "https://espremium.ec/wp-content/uploads/2024/06/13.png",
+            vix: "https://espremium.ec/wp-content/uploads/2024/06/4-4.png",
+            pornhub: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai_-1.png",
+            canva: "https://espremium.ec/wp-content/uploads/2024/06/9.png",
+            paramount: "https://espremium.ec/wp-content/uploads/2024/06/5-2.png",
+            viki: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai-10.png",
+            chatgpt: "https://espremium.ec/wp-content/uploads/2025/06/6-1.jpg",
+            iptv: "https://espremium.ec/wp-content/uploads/2024/06/5-4.png",
+            apple: "https://espremium.ec/wp-content/uploads/2024/06/12-e1754581711707.png",
+            office: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai-8.png",
+            tv: "https://cdn-icons-png.flaticon.com/512/3364/3364355.png",
+            musica: "https://cdn-icons-png.flaticon.com/512/5968/5968863.png",
+            pelicula: "https://cdn-icons-png.flaticon.com/512/3163/3163508.png",
+            ai: "https://cdn-icons-png.flaticon.com/512/12903/12903332.png",
+            edicion: "https://cdn-icons-png.flaticon.com/512/12595/12595905.png",
+            media: "https://cdn-icons-png.flaticon.com/512/4619/4619477.png",
+            combo: "https://cdn-icons-png.flaticon.com/512/4129/4129437.png", 
+            juegos: "https://cdn-icons-png.flaticon.com/512/808/808439.png" 
+        };
+
+        const catalogo = [
+            {
+                titulo: "Pantallas Individuales 1 perfil (1 Mes)",
+                productos: [
+                    { nombre: "Netflix", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "1 Pantalla (1 perfil asignado).\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
+                    { nombre: "Netflix perfil extra personal", precio: 5.00, precioOriginal: 5.00, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "1 Perfil Extra de Netflix totalmente personal y exclusivo.\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
+                    { nombre: "Disney Premium + ESPN", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: img.disney, duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Premium.\n- Incluye todo el catálogo y deportes de ESPN.\n- Sin anuncios." },
+                    { nombre: "Disney Estándar", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: img.disneyEstandar, duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Estándar.\n- Incluye anuncios durante la reproducción.\n- Excelente precio." },
+                    { nombre: "HBO Max", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: img.hbo, duracion: "1 Mes", descripcion: "1 Perfil de Max (antes HBO Max).\n- Disfruta de las mejores series y películas de HBO." },
+                    { nombre: "Prime Video", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.prime, duracion: "1 Mes", descripcion: "1 Pantalla de Amazon Prime Video.\n- Catálogo completo de series y películas." },
+                    { nombre: "Paramount", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.paramount, duracion: "1 Mes", descripcion: "1 Pantalla de Paramount+.\n- Disfruta de Halo, South Park y más." },
+                    { nombre: "Crunchyroll", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.crunchyroll, duracion: "1 Mes", descripcion: "1 Perfil de Crunchyroll Mega Fan.\n- Anime sin anuncios y episodios de estreno." },
+                    { nombre: "Flujo TV", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Suscripción a Flujo TV (1 mes).\n- Televisión en vivo, películas y series." },
+                    { nombre: "Vix", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.vix, duracion: "1 Mes", descripcion: "1 Pantalla de Vix Premium.\n- Novelas, deportes y contenido en español." },
+                    { nombre: "Viki Rakuten", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: img.viki, duracion: "1 Mes", descripcion: "1 Perfil Viki Pass Plus.\n- Doramas y contenido asiático exclusivo." },
+                    { nombre: "Plex", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.plex, duracion: "1 Mes", descripcion: "1 Pantalla de Plex Premium.\n- Acceso a nuestro servidor privado con el mejor contenido." },
+                    { nombre: "Universal", precio: 2.25, precioOriginal: 3.50, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "1 Pantalla de Universal+.\n- Acceso a contenido exclusivo de Universal." },
+                    { nombre: "Jellyfin", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin (1 mes).\n- Películas y series a la carta." },
+                    { nombre: "Jellyfin +18", precio: 4.75, precioOriginal: 6.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin con contenido sin censura (+18)." }
+                ]
+            },
+            {
+                titulo: "Música y Video",
+                productos: [
+                    { nombre: "YouTube", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.youtube, duracion: "1 Mes", descripcion: "YouTube Premium (1 mes).\n- Videos sin anuncios.\n- Reproducción en segundo plano y YouTube Music." },
+                    { nombre: "Spotify", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: img.spotify, duracion: "1 Mes", descripcion: "Spotify Premium (1 mes).\n- Música sin interrupciones.\n- Descarga de canciones para modo offline." },
+                    { nombre: "Deezer", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.musica, duracion: "1 Mes", descripcion: "Deezer Premium (1 mes).\n- Audio de alta fidelidad y sin anuncios." }
+                ]
+            },
+            {
+                titulo: "Cuentas Completas",
+                productos: [
+                    { nombre: "Netflix", precio: 12.00, precioOriginal: 16.00, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "Cuenta Netflix Completa.\n- Uso de todas las pantallas simultáneas.\n- Cuenta totalmente privada y renovable." },
+                    { nombre: "Disney+ Premium Completa", precio: 11.00, precioOriginal: 15.00, disponible: true, imagen: img.disney, duracion: "1 Mes", descripcion: "Cuenta Disney+ Premium Completa.\n- Incluye ESPN.\n- Totalmente privada para ti y tu familia." },
+                    { nombre: "HBO Max", precio: 5.00, precioOriginal: 8.00, disponible: true, imagen: img.hbo, duracion: "1 Mes", descripcion: "Cuenta Max Completa.\n- Privada y con capacidad para usar todos los perfiles." },
+                    { nombre: "Prime Video", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.prime, duracion: "1 Mes", descripcion: "Cuenta Prime Video Completa.\n- Crea tus propios perfiles y compártela con quien quieras." },
+                    { nombre: "Paramount+", precio: 3.75, precioOriginal: 6.00, disponible: true, imagen: img.paramount, duracion: "1 Mes", descripcion: "Cuenta Paramount+ Completa.\n- Acceso total y privado." },
+                    { nombre: "Vix", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.vix, duracion: "1 Mes", descripcion: "Cuenta Vix Premium Completa.\n- Disfruta del mejor contenido latino sin restricciones." },
+                    { nombre: "Crunchyroll", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.crunchyroll, duracion: "1 Mes", descripcion: "Cuenta Crunchyroll Completa.\n- Ideal para verdaderos fans del anime." },
+                    { nombre: "Plex", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.plex, duracion: "1 Mes", descripcion: "Cuenta Plex Completa.\n- Conexión Premium a nuestro servidor de medios." },
+                    { nombre: "Universal+", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "Cuenta Universal+ Completa.\n- Entretenimiento para todas tus pantallas." },
+                    { nombre: "Apple TV", precio: 6.25, precioOriginal: 9.00, disponible: true, imagen: img.apple, duracion: "1 Mes", descripcion: "Cuenta Apple TV+ Completa.\n- Series originales y calidad de imagen excepcional." },
+                    { nombre: "Jellyfin", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa.\n- Acceso total a nuestro catálogo de medios." },
+                    { nombre: "Jellyfin +18", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa (+18).\n- Acceso total incluyendo la categoría para adultos." },
+                    { nombre: "Porn Hub", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.pornhub, duracion: "1 Mes", descripcion: "Cuenta PornHub Premium Completa.\n- Contenido exclusivo en alta calidad." },
+                    { nombre: "Telelatino", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "Cuenta Telelatino Completa.\n- Televisión, series y películas en una sola app." },
+                    { nombre: "IPTVP3", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.iptv, duracion: "1 Mes", descripcion: "Suscripción IPTVP3 Completa.\n- Cientos de canales en vivo y VOD." },
+                    { nombre: "Flujo TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Cuenta Flujo TV Completa.\n- La mejor programación IPTV." },
+                    { nombre: "Viki Rakuten", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: img.viki, duracion: "1 Mes", descripcion: "Cuenta Viki Pass Plus Completa.\n- Privada y lista para todos tus doramas." },
+                    { nombre: "Stella TV", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Cuenta Stella TV Completa.\n- Entretenimiento digital garantizado." }
+                ]
+            },
+            {
+                titulo: "IA y Edición",
+                productos: [
+                    { nombre: "Canva Premium", precio: 3.25, precioOriginal: 5.00, disponible: true, imagen: img.canva, duracion: "1 Mes", descripcion: "Actualización a Canva Pro (1 mes).\n- Se activa en tu propio correo electrónico.\n- Acceso a todas las plantillas y elementos premium." },
+                    { nombre: "Gemini Pro", precio: 9.50, precioOriginal: 15.00, disponible: true, imagen: img.ai, duracion: "1 Mes", descripcion: "Suscripción a Google Gemini Pro/Advanced.\n- El modelo de inteligencia artificial más potente de Google." },
+                    { nombre: "Chat GPT PLUS 5.1", precio: 9.75, precioOriginal: 15.00, disponible: true, imagen: img.chatgpt, duracion: "1 Mes", descripcion: "Cuenta de ChatGPT Plus.\n- Acceso a GPT-4, DALL-E 3 y respuestas más rápidas." },
+                    { nombre: "CapCut", precio: 10.25, precioOriginal: 14.00, disponible: true, imagen: img.edicion, duracion: "1 Mes", descripcion: "Suscripción a CapCut Pro.\n- Desbloquea todos los efectos y herramientas avanzadas de edición." },
+                    { nombre: "Office 365 x 1 año", precio: 14.50, precioOriginal: 20.00, disponible: true, imagen: img.office, duracion: "1 Año", descripcion: "Licencia de Microsoft Office 365 (1 Año).\n- Incluye Word, Excel, PowerPoint y 1TB en OneDrive." }
+                ]
+            },
+            {
+                titulo: "Combos",
+                productos: [
+                    { nombre: "Netflix + Disney+ / Star", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Disney+ Premium por un precio especial." },
+                    { nombre: "Netflix + Prime Video", precio: 6.00, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 de Prime Video." },
+                    { nombre: "Netflix + Max", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Max." },
+                    { nombre: "Netflix + Paramount+", precio: 5.75, precioOriginal: 8.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Pantalla de Paramount+." },
+                    { nombre: "Netflix + Magis TV", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo entretenimiento total: Netflix + App Magis TV." },
+                    { nombre: "Netflix + IPTV Player Pro", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Cine y TV en vivo: Netflix + IPTV Player Pro." },
+                    { nombre: "Netflix + Tele Latino", precio: 7.25, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo familiar: Netflix + Tele Latino." },
+                    { nombre: "Max + Prime Video", precio: 4.50, precioOriginal: 6.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Series exclusivas: 1 Perfil de Max + 1 Pantalla Prime Video." },
+                    { nombre: "Disney+ / Star + Tele Latino", precio: 6.75, precioOriginal: 9.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo deportes y TV: Disney+ Premium + Tele Latino." },
+                    { nombre: "Disney+ / Star + IPTV Player Pro", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales en vivo IPTV." },
+                    { nombre: "Prime Video + Paramount+", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo cine en casa: Prime Video + Paramount+." },
+                    { nombre: "Disney+ / Star + Spotify", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo audio y video: Disney+ Premium + Spotify Premium." },
+                    { nombre: "Netflix + YouTube Premium", precio: 7.75, precioOriginal: 11.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo sin interrupciones: Netflix + YouTube sin anuncios." },
+                    { nombre: "Disney+ / Star + Magis TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales y VOD de Magis TV." },
+                    { nombre: "Netflix + Max + Magis TV", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo triple: Netflix + Max + Magis TV." },
+                    { nombre: "Netflix + IPTV Player Pro + Disney+", precio: 9.75, precioOriginal: 14.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Super combo triple: Netflix + IPTV Pro + Disney+ Premium." },
+                    { nombre: "Netflix + Tele Latino + Disney+", precio: 10.25, precioOriginal: 15.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo máximo entretenimiento: Netflix + Tele Latino + Disney+." },
+                    { nombre: "Paramount+ + Disney+ + IPTV Player Pro", precio: 8.00, precioOriginal: 11.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo variado: Paramount+ + Disney+ Premium + IPTV." },
+                    { nombre: "Netflix + Prime Video + Disney+", precio: 9.00, precioOriginal: 13.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Trilogía de streaming: Netflix + Prime + Disney+." },
+                    { nombre: "Netflix + Max + Disney+", precio: 9.25, precioOriginal: 13.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Trilogía premium: Netflix + Max + Disney+." },
+                    { nombre: "Netflix + Magis TV + Disney+", precio: 10.00, precioOriginal: 14.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Todo el contenido: Netflix + Magis TV + Disney+ Premium." },
+                    { nombre: "Netflix + Prime Video + Tele Latino", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo variedad: Netflix + Prime Video + Tele Latino." },
+                    { nombre: "Plex + Prime Video + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo cine y series en casa: Plex + Prime Video + Paramount+." },
+                    { nombre: "Plex + Vix + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo latino y cine: Plex + Vix Premium + Paramount+." }
+                ]
+            },
+            {
+                titulo: "Categoría VIP",
+                productos: [
+                    { nombre: "Amazon Prime (6 meses)", precio: 20.00, precioOriginal: 25.00, disponible: true, imagen: img.prime, duracion: "6 Meses", descripcion: "Cuenta Prime Video asegurada por 6 meses completos." },
+                    { nombre: "Plex (3 meses)", precio: 14.00, precioOriginal: 18.00, disponible: true, imagen: img.plex, duracion: "3 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 3 meses." },
+                    { nombre: "Plex (7 meses)", precio: 27.00, precioOriginal: 35.00, disponible: true, imagen: img.plex, duracion: "7 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 7 meses." },
+                    { nombre: "Canva Premium (3 meses)", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.canva, duracion: "3 Meses", descripcion: "Suscripción Canva Pro en tu correo por 3 meses." },
+                    { nombre: "Canva Premium (12 meses)", precio: 14.00, precioOriginal: 25.00, disponible: true, imagen: img.canva, duracion: "1 Año", descripcion: "Suscripción Canva Pro en tu correo por todo 1 Año." },
+                    { nombre: "PS Plus Deluxe (12 meses)", precio: 113.00, precioOriginal: 135.00, disponible: true, imagen: img.juegos, duracion: "1 Año", descripcion: "Suscripción a PlayStation Plus Deluxe por 1 Año.\n- Acceso al catálogo de juegos clásicos y actuales." },
+                    { nombre: "Flujo TV (3 meses)", precio: 15.00, precioOriginal: 20.00, disponible: true, imagen: img.tv, duracion: "3 Meses", descripcion: "Suscripción Flujo TV sin cortes por 3 meses." },
+                    { nombre: "Flujo TV (7 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: img.tv, duracion: "7 Meses", descripcion: "Suscripción Flujo TV sin cortes por 7 meses." },
+                    { nombre: "IPTV3 Completo (6 meses)", precio: 23.00, precioOriginal: 30.00, disponible: true, imagen: img.iptv, duracion: "6 Meses", descripcion: "Acceso total a servidor IPTVP3 por 6 meses seguidos." },
+                    { nombre: "Xbox Gamepass Principal (2 meses)", precio: 35.00, precioOriginal: 45.00, disponible: true, imagen: img.juegos, duracion: "2 Meses", descripcion: "Cuenta Principal Xbox Gamepass Ultimate por 2 meses." },
+                    { nombre: "Xbox Gamepass Secundaria (2 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: img.juegos, duracion: "2 Meses", descripcion: "Cuenta Secundaria Xbox Gamepass Ultimate por 2 meses." }
+                ]
+            }
+        ];
+
+        let prodActual = null;
+        let catActual = "";    
+        let modalProd;
+        let modalPago;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            modalProd = new bootstrap.Modal(document.getElementById('modalProducto'));
+            modalPago = new bootstrap.Modal(document.getElementById('modalPago'));
+            inicializarPantalla();
+            
+            const mensajeGeneral = "Hola quiero mas informacion ¿Pueden ayudarme por favor?";
+            document.getElementById("btn-whatsapp-general").href = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensajeGeneral)}`;
+        });
+
+        function inicializarPantalla() {
+            const menuCategorias = document.getElementById("menu-categorias");
+            catalogo.forEach((categoria, index) => {
+                const isActive = index === 0 ? "active" : "";
+                menuCategorias.innerHTML += `
+                    <button class="menu-btn ${isActive}" id="btn-cat-${index}" onclick="mostrarCategoria(${index})">
+                        ${categoria.titulo}
+                    </button>
+                `;
+            });
+
+            const divPagos = document.getElementById("contenedor-metodos");
+            metodosDePago.forEach(metodo => {
+                divPagos.innerHTML += `
+                    <button class="payment-method-btn" onclick="enviarPedido('${metodo.nombre}')">
+                        <span class="payment-icon">${metodo.icono}</span>
+                        <span>${metodo.nombre}</span>
+                    </button>
+                `;
+            });
+
+            mostrarCategoria(0);
+        }
+
+        function mostrarCategoria(index) {
+            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-cat-${index}`).classList.add('active');
+            
+            const categoria = catalogo[index];
+            document.getElementById("titulo-categoria-activa").textContent = categoria.titulo;
+            
+            const contenedor = document.getElementById("contenedor-productos");
+            contenedor.innerHTML = "";
+            
+            categoria.productos.forEach((prod, prodIndex) => {
+                if (prod.mostrar === false) return; 
+                
+                const badgeOut = prod.disponible ? '' : '<span class="badge-stock">AGOTADO</span>';
+                
+                let badgeAhorro = '';
+                let htmlPrecios = `<div class="price-tag">$${prod.precio.toFixed(2)}</div>`;
+                
+                if (prod.precioOriginal > prod.precio) {
+                    const ahorroNum = (prod.precioOriginal - prod.precio).toFixed(2);
+                    badgeAhorro = `<span class="badge-ahorro">Ahorro $${ahorroNum}</span>`;
+                    htmlPrecios = `
+                        <div class="price-container">
+                            <span class="old-price">$${prod.precioOriginal.toFixed(2)}</span>
+                            <span class="price-tag">$${prod.precio.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+                
+                const iconoReloj = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+
+                contenedor.innerHTML += `
+                    <div class="col-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card card-product ${prod.disponible ? '' : 'card-agotado'}" onclick="${prod.disponible ? `abrirDetalle(${index}, ${prodIndex})` : ''}">
+                            ${badgeOut}
+                            ${badgeAhorro}
+                            <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
+                            <div class="card-body-custom">
+                                <span class="duracion-tag">${iconoReloj} ${prod.duracion}</span>
+                                <div class="service-name">${prod.nombre}</div>
+                                ${htmlPrecios}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function abrirDetalle(catIndex, prodIndex) {
+            catActual = catalogo[catIndex].titulo;
+            prodActual = catalogo[catIndex].productos[prodIndex];
+
+            document.getElementById("modal-img").src = prodActual.imagen;
+            document.getElementById("modal-title").textContent = prodActual.nombre;
+            document.getElementById("modal-cat").textContent = catActual;
+            document.getElementById("modal-price").textContent = `$${prodActual.precio.toFixed(2)}`;
+            
+            const iconoReloj = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px; width:14px; height:14px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
+            document.getElementById("modal-duracion").innerHTML = `${iconoReloj} ${prodActual.duracion}`;
+            
+            const modalOldPrice = document.getElementById("modal-old-price");
+            const modalAhorroBadge = document.getElementById("modal-ahorro-badge");
+            
+            if (prodActual.precioOriginal > prodActual.precio) {
+                const ahorroNum = (prodActual.precioOriginal - prodActual.precio).toFixed(2);
+                modalOldPrice.textContent = `$${prodActual.precioOriginal.toFixed(2)}`;
+                modalOldPrice.style.display = "inline";
+                
+                modalAhorroBadge.textContent = `¡Ahorras $${ahorroNum}!`;
+                modalAhorroBadge.style.display = "block";
+            } else {
+                modalOldPrice.style.display = "none";
+                modalAhorroBadge.style.display = "none";
+            }
+
+            document.getElementById("modal-desc").textContent = prodActual.descripcion + terminosGarantia;
+
+            modalProd.show();
+        }
+
+        function abrirModalPago() {
+            modalProd.hide(); 
+            modalPago.show(); 
+        }
+
+        function enviarPedido(metodoElegido) {
+            const texto = `Hola, quiero comprar *${prodActual.nombre}* a *$${prodActual.precio.toFixed(2)}*.\nCategoría: ${catActual}\nMétodo de pago seleccionado: *${metodoElegido}*`;
+            const url = `https://wa.me/${miNumero}?text=${encodeURIComponent(texto)}`;
+            
+            window.open(url, '_blank');
+            modalPago.hide();
+        }
+
+    </script>
+</body>
+</html>
