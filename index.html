@@ -253,12 +253,11 @@
         .whatsapp-float:hover { background-color: #20b858; transform: scale(1.1); color: white;}
         .whatsapp-icon { width: 40px; height: 40px; }
 
-        /* === MEJORA VISUAL PARA CELULARES === */
         @media (max-width: 768px) {
             .sidebar-menu {
                 flex-direction: row;
-                flex-wrap: wrap; /* Esto hace que los botones bajen si no caben */
-                justify-content: center; /* Los centra bonito en la pantalla */
+                flex-wrap: wrap; 
+                justify-content: center; 
                 padding-bottom: 15px;
                 padding-right: 0;
                 top: 60px; 
@@ -268,7 +267,7 @@
                 margin-bottom: 20px;
             }
             .menu-btn { 
-                flex: 0 1 auto; /* Se ajustan al tamaño de su texto */
+                flex: 0 1 auto; 
                 padding: 8px 12px; 
                 font-size: 0.85rem; 
                 text-align: center;
@@ -358,140 +357,111 @@
 
         const terminosGarantia = "\n\n✅ Tiempo garantizado: Tu membresía está 100% cubierta por el tiempo contratado.\n⚠️ Aviso: Al ser servicios digitales, pueden presentar caídas o errores temporales que demoran un tiempo en solucionarse. Agradecemos tu paciencia.\n🔒 REGLA ESTRICTA: Utiliza ÚNICAMENTE el perfil y acceso que se te entregó. Modificar datos o usar otros perfiles anulará tu garantía.\n♻️ Soporte: Por motivos de caídas o compatibilidad, es posible que te entreguemos nuevos datos de acceso para garantizar que cumplas tus días de servicio.";
 
-        const img = {
-            netflix: "https://espremium.ec/wp-content/uploads/2024/05/14-1.png",
-            disney: "https://espremium.ec/wp-content/uploads/2025/06/1.png",
-            disneyEstandar: "https://espremium.ec/wp-content/uploads/2024/06/Post-de-Instagram-Vertical-Manicura-Profesional-Crema-4.png",
-            prime: "https://espremium.ec/wp-content/uploads/2024/06/6.png",
-            hbo: "https://espremium.ec/wp-content/uploads/2024/06/4-1.png",
-            youtube: "https://espremium.ec/wp-content/uploads/2024/06/14.png",
-            spotify: "https://espremium.ec/wp-content/uploads/2024/06/15.png",
-            crunchyroll: "https://espremium.ec/wp-content/uploads/2024/06/4-3.png",
-            plex: "https://espremium.ec/wp-content/uploads/2024/06/13.png",
-            vix: "https://espremium.ec/wp-content/uploads/2024/06/4-4.png",
-            pornhub: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai_-1.png",
-            canva: "https://espremium.ec/wp-content/uploads/2024/06/9.png",
-            paramount: "https://espremium.ec/wp-content/uploads/2024/06/5-2.png",
-            viki: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai-10.png",
-            chatgpt: "https://espremium.ec/wp-content/uploads/2025/06/6-1.jpg",
-            iptv: "https://espremium.ec/wp-content/uploads/2024/06/5-4.png",
-            apple: "https://espremium.ec/wp-content/uploads/2024/06/12-e1754581711707.png",
-            office: "https://espremium.ec/wp-content/uploads/2024/06/Imagenes-de-cuenta-.ai-8.png",
-            tv: "https://cdn-icons-png.flaticon.com/512/3364/3364355.png",
-            musica: "https://cdn-icons-png.flaticon.com/512/5968/5968863.png",
-            pelicula: "https://cdn-icons-png.flaticon.com/512/3163/3163508.png",
-            ai: "https://cdn-icons-png.flaticon.com/512/12903/12903332.png",
-            edicion: "https://cdn-icons-png.flaticon.com/512/12595/12595905.png",
-            media: "https://cdn-icons-png.flaticon.com/512/4619/4619477.png",
-            combo: "https://cdn-icons-png.flaticon.com/512/4129/4129437.png", 
-            juegos: "https://cdn-icons-png.flaticon.com/512/808/808439.png" 
-        };
-
         const catalogo = [
             {
                 titulo: "Pantallas Individuales 1 perfil (1 Mes)",
                 productos: [
-                    { nombre: "Netflix", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "1 Pantalla (1 perfil asignado).\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
-                    { nombre: "Netflix perfil extra personal", precio: 5.00, precioOriginal: 5.00, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "1 Perfil Extra de Netflix totalmente personal y exclusivo.\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
-                    { nombre: "Disney Premium + ESPN", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: img.disney, duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Premium.\n- Incluye todo el catálogo y deportes de ESPN.\n- Sin anuncios." },
-                    { nombre: "Disney Estándar", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: img.disneyEstandar, duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Estándar.\n- Incluye anuncios durante la reproducción.\n- Excelente precio." },
-                    { nombre: "HBO Max", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: img.hbo, duracion: "1 Mes", descripcion: "1 Perfil de Max (antes HBO Max).\n- Disfruta de las mejores series y películas de HBO." },
-                    { nombre: "Prime Video", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.prime, duracion: "1 Mes", descripcion: "1 Pantalla de Amazon Prime Video.\n- Catálogo completo de series y películas." },
-                    { nombre: "Paramount", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.paramount, duracion: "1 Mes", descripcion: "1 Pantalla de Paramount+.\n- Disfruta de Halo, South Park y más." },
-                    { nombre: "Crunchyroll", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.crunchyroll, duracion: "1 Mes", descripcion: "1 Perfil de Crunchyroll Mega Fan.\n- Anime sin anuncios y episodios de estreno." },
-                    { nombre: "Flujo TV", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Suscripción a Flujo TV (1 mes).\n- Televisión en vivo, películas y series." },
-                    { nombre: "Vix", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: img.vix, duracion: "1 Mes", descripcion: "1 Pantalla de Vix Premium.\n- Novelas, deportes y contenido en español." },
-                    { nombre: "Viki Rakuten", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: img.viki, duracion: "1 Mes", descripcion: "1 Perfil Viki Pass Plus.\n- Doramas y contenido asiático exclusivo." },
-                    { nombre: "Plex", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.plex, duracion: "1 Mes", descripcion: "1 Pantalla de Plex Premium.\n- Acceso a nuestro servidor privado con el mejor contenido." },
-                    { nombre: "Universal", precio: 2.25, precioOriginal: 3.50, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "1 Pantalla de Universal+.\n- Acceso a contenido exclusivo de Universal." },
-                    { nombre: "Jellyfin", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin (1 mes).\n- Películas y series a la carta." },
-                    { nombre: "Jellyfin +18", precio: 4.75, precioOriginal: 6.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin con contenido sin censura (+18)." }
+                    { nombre: "Netflix", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla (1 perfil asignado).\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
+                    { nombre: "Netflix perfil extra personal", precio: 5.00, precioOriginal: 5.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil Extra de Netflix totalmente personal y exclusivo.\n- Calidad Ultra HD 4K.\n- Entrega y soporte rápido." },
+                    { nombre: "Disney Premium + ESPN", precio: 4.00, precioOriginal: 5.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Premium.\n- Incluye todo el catálogo y deportes de ESPN.\n- Sin anuncios." },
+                    { nombre: "Disney Estándar", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil de Disney+ Estándar.\n- Incluye anuncios durante la reproducción.\n- Excelente precio." },
+                    { nombre: "HBO Max", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil de Max (antes HBO Max).\n- Disfruta de las mejores series y películas de HBO." },
+                    { nombre: "Prime Video", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla de Amazon Prime Video.\n- Catálogo completo de series y películas." },
+                    { nombre: "Paramount", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla de Paramount+.\n- Disfruta de Halo, South Park y más." },
+                    { nombre: "Crunchyroll", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil de Crunchyroll Mega Fan.\n- Anime sin anuncios y episodios de estreno." },
+                    { nombre: "Flujo TV", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Suscripción a Flujo TV (1 mes).\n- Televisión en vivo, películas y series." },
+                    { nombre: "Vix", precio: 2.75, precioOriginal: 4.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla de Vix Premium.\n- Novelas, deportes y contenido en español." },
+                    { nombre: "Viki Rakuten", precio: 3.00, precioOriginal: 4.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Perfil Viki Pass Plus.\n- Doramas y contenido asiático exclusivo." },
+                    { nombre: "Plex", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla de Plex Premium.\n- Acceso a nuestro servidor privado con el mejor contenido." },
+                    { nombre: "Universal", precio: 2.25, precioOriginal: 3.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "1 Pantalla de Universal+.\n- Acceso a contenido exclusivo de Universal." },
+                    { nombre: "Jellyfin", precio: 3.25, precioOriginal: 4.50, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin (1 mes).\n- Películas y series a la carta." },
+                    { nombre: "Jellyfin +18", precio: 4.75, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/imagen-Pantallas-Individuales-1-perfil/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Acceso a servidor Jellyfin con contenido sin censura (+18)." }
                 ]
             },
             {
                 titulo: "Música y Video",
                 productos: [
-                    { nombre: "YouTube", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.youtube, duracion: "1 Mes", descripcion: "YouTube Premium (1 mes).\n- Videos sin anuncios.\n- Reproducción en segundo plano y YouTube Music." },
-                    { nombre: "Spotify", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: img.spotify, duracion: "1 Mes", descripcion: "Spotify Premium (1 mes).\n- Música sin interrupciones.\n- Descarga de canciones para modo offline." },
-                    { nombre: "Deezer", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: img.musica, duracion: "1 Mes", descripcion: "Deezer Premium (1 mes).\n- Audio de alta fidelidad y sin anuncios." }
+                    { nombre: "YouTube", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/musica-video/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "YouTube Premium (1 mes).\n- Videos sin anuncios.\n- Reproducción en segundo plano y YouTube Music." },
+                    { nombre: "Spotify", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/musica-video/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Spotify Premium (1 mes).\n- Música sin interrupciones.\n- Descarga de canciones para modo offline." },
+                    { nombre: "Deezer", precio: 3.75, precioOriginal: 5.00, disponible: true, imagen: "imagenes-pagina/musica-video/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Deezer Premium (1 mes).\n- Audio de alta fidelidad y sin anuncios." }
                 ]
             },
             {
                 titulo: "Cuentas Completas",
                 productos: [
-                    { nombre: "Netflix", precio: 12.00, precioOriginal: 16.00, disponible: true, imagen: img.netflix, duracion: "1 Mes", descripcion: "Cuenta Netflix Completa.\n- Uso de todas las pantallas simultáneas.\n- Cuenta totalmente privada y renovable." },
-                    { nombre: "Disney+ Premium Completa", precio: 11.00, precioOriginal: 15.00, disponible: true, imagen: img.disney, duracion: "1 Mes", descripcion: "Cuenta Disney+ Premium Completa.\n- Incluye ESPN.\n- Totalmente privada para ti y tu familia." },
-                    { nombre: "HBO Max", precio: 5.00, precioOriginal: 8.00, disponible: true, imagen: img.hbo, duracion: "1 Mes", descripcion: "Cuenta Max Completa.\n- Privada y con capacidad para usar todos los perfiles." },
-                    { nombre: "Prime Video", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.prime, duracion: "1 Mes", descripcion: "Cuenta Prime Video Completa.\n- Crea tus propios perfiles y compártela con quien quieras." },
-                    { nombre: "Paramount+", precio: 3.75, precioOriginal: 6.00, disponible: true, imagen: img.paramount, duracion: "1 Mes", descripcion: "Cuenta Paramount+ Completa.\n- Acceso total y privado." },
-                    { nombre: "Vix", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.vix, duracion: "1 Mes", descripcion: "Cuenta Vix Premium Completa.\n- Disfruta del mejor contenido latino sin restricciones." },
-                    { nombre: "Crunchyroll", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.crunchyroll, duracion: "1 Mes", descripcion: "Cuenta Crunchyroll Completa.\n- Ideal para verdaderos fans del anime." },
-                    { nombre: "Plex", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.plex, duracion: "1 Mes", descripcion: "Cuenta Plex Completa.\n- Conexión Premium a nuestro servidor de medios." },
-                    { nombre: "Universal+", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "Cuenta Universal+ Completa.\n- Entretenimiento para todas tus pantallas." },
-                    { nombre: "Apple TV", precio: 6.25, precioOriginal: 9.00, disponible: true, imagen: img.apple, duracion: "1 Mes", descripcion: "Cuenta Apple TV+ Completa.\n- Series originales y calidad de imagen excepcional." },
-                    { nombre: "Jellyfin", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa.\n- Acceso total a nuestro catálogo de medios." },
-                    { nombre: "Jellyfin +18", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.media, duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa (+18).\n- Acceso total incluyendo la categoría para adultos." },
-                    { nombre: "Porn Hub", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.pornhub, duracion: "1 Mes", descripcion: "Cuenta PornHub Premium Completa.\n- Contenido exclusivo en alta calidad." },
-                    { nombre: "Telelatino", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.pelicula, duracion: "1 Mes", descripcion: "Cuenta Telelatino Completa.\n- Televisión, series y películas en una sola app." },
-                    { nombre: "IPTVP3", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: img.iptv, duracion: "1 Mes", descripcion: "Suscripción IPTVP3 Completa.\n- Cientos de canales en vivo y VOD." },
-                    { nombre: "Flujo TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Cuenta Flujo TV Completa.\n- La mejor programación IPTV." },
-                    { nombre: "Viki Rakuten", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: img.viki, duracion: "1 Mes", descripcion: "Cuenta Viki Pass Plus Completa.\n- Privada y lista para todos tus doramas." },
-                    { nombre: "Stella TV", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: img.tv, duracion: "1 Mes", descripcion: "Cuenta Stella TV Completa.\n- Entretenimiento digital garantizado." }
+                    { nombre: "Netflix", precio: 12.00, precioOriginal: 16.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Netflix Completa.\n- Uso de todas las pantallas simultáneas.\n- Cuenta totalmente privada y renovable." },
+                    { nombre: "Disney+ Premium Completa", precio: 11.00, precioOriginal: 15.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Disney+ Premium Completa.\n- Incluye ESPN.\n- Totalmente privada para ti y tu familia." },
+                    { nombre: "HBO Max", precio: 5.00, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Max Completa.\n- Privada y con capacidad para usar todos los perfiles." },
+                    { nombre: "Prime Video", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Prime Video Completa.\n- Crea tus propios perfiles y compártela con quien quieras." },
+                    { nombre: "Paramount+", precio: 3.75, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Paramount+ Completa.\n- Acceso total y privado." },
+                    { nombre: "Vix", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Vix Premium Completa.\n- Disfruta del mejor contenido latino sin restricciones." },
+                    { nombre: "Crunchyroll", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Crunchyroll Completa.\n- Ideal para verdaderos fans del anime." },
+                    { nombre: "Plex", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Plex Completa.\n- Conexión Premium a nuestro servidor de medios." },
+                    { nombre: "Universal+", precio: 4.00, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Universal+ Completa.\n- Entretenimiento para todas tus pantallas." },
+                    { nombre: "Apple TV", precio: 6.25, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Apple TV+ Completa.\n- Series originales y calidad de imagen excepcional." },
+                    { nombre: "Jellyfin", precio: 4.75, precioOriginal: 7.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa.\n- Acceso total a nuestro catálogo de medios." },
+                    { nombre: "Jellyfin +18", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Jellyfin Completa (+18).\n- Acceso total incluyendo la categoría para adultos." },
+                    { nombre: "Porn Hub", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta PornHub Premium Completa.\n- Contenido exclusivo en alta calidad." },
+                    { nombre: "Telelatino", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Telelatino Completa.\n- Televisión, series y películas en una sola app." },
+                    { nombre: "IPTVP3", precio: 5.50, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Suscripción IPTVP3 Completa.\n- Cientos de canales en vivo y VOD." },
+                    { nombre: "Flujo TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Flujo TV Completa.\n- La mejor programación IPTV." },
+                    { nombre: "Viki Rakuten", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Viki Pass Plus Completa.\n- Privada y lista para todos tus doramas." },
+                    { nombre: "Stella TV", precio: 6.00, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/cuentas-completas/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta Stella TV Completa.\n- Entretenimiento digital garantizado." }
                 ]
             },
             {
                 titulo: "IA y Edición",
                 productos: [
-                    { nombre: "Canva Premium", precio: 3.25, precioOriginal: 5.00, disponible: true, imagen: img.canva, duracion: "1 Mes", descripcion: "Actualización a Canva Pro (1 mes).\n- Se activa en tu propio correo electrónico.\n- Acceso a todas las plantillas y elementos premium." },
-                    { nombre: "Gemini Pro", precio: 9.50, precioOriginal: 15.00, disponible: true, imagen: img.ai, duracion: "1 Mes", descripcion: "Suscripción a Google Gemini Pro/Advanced.\n- El modelo de inteligencia artificial más potente de Google." },
-                    { nombre: "Chat GPT PLUS 5.1", precio: 9.75, precioOriginal: 15.00, disponible: true, imagen: img.chatgpt, duracion: "1 Mes", descripcion: "Cuenta de ChatGPT Plus.\n- Acceso a GPT-4, DALL-E 3 y respuestas más rápidas." },
-                    { nombre: "CapCut", precio: 10.25, precioOriginal: 14.00, disponible: true, imagen: img.edicion, duracion: "1 Mes", descripcion: "Suscripción a CapCut Pro.\n- Desbloquea todos los efectos y herramientas avanzadas de edición." },
-                    { nombre: "Office 365 x 1 año", precio: 14.50, precioOriginal: 20.00, disponible: true, imagen: img.office, duracion: "1 Año", descripcion: "Licencia de Microsoft Office 365 (1 Año).\n- Incluye Word, Excel, PowerPoint y 1TB en OneDrive." }
+                    { nombre: "Canva Premium", precio: 3.25, precioOriginal: 5.00, disponible: true, imagen: "imagenes-pagina/IA-edicion/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Actualización a Canva Pro (1 mes).\n- Se activa en tu propio correo electrónico.\n- Acceso a todas las plantillas y elementos premium." },
+                    { nombre: "Gemini Pro", precio: 9.50, precioOriginal: 15.00, disponible: true, imagen: "imagenes-pagina/IA-edicion/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Suscripción a Google Gemini Pro/Advanced.\n- El modelo de inteligencia artificial más potente de Google." },
+                    { nombre: "Chat GPT PLUS 5.1", precio: 9.75, precioOriginal: 15.00, disponible: true, imagen: "imagenes-pagina/IA-edicion/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cuenta de ChatGPT Plus.\n- Acceso a GPT-4, DALL-E 3 y respuestas más rápidas." },
+                    { nombre: "CapCut", precio: 10.25, precioOriginal: 14.00, disponible: true, imagen: "imagenes-pagina/IA-edicion/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Suscripción a CapCut Pro.\n- Desbloquea todos los efectos y herramientas avanzadas de edición." },
+                    { nombre: "Office 365 x 1 año", precio: 14.50, precioOriginal: 20.00, disponible: true, imagen: "imagenes-pagina/IA-edicion/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Año", descripcion: "Licencia de Microsoft Office 365 (1 Año).\n- Incluye Word, Excel, PowerPoint y 1TB en OneDrive." }
                 ]
             },
             {
                 titulo: "Combos",
                 productos: [
-                    { nombre: "Netflix + Disney+ / Star", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Disney+ Premium por un precio especial." },
-                    { nombre: "Netflix + Prime Video", precio: 6.00, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 de Prime Video." },
-                    { nombre: "Netflix + Max", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Max." },
-                    { nombre: "Netflix + Paramount+", precio: 5.75, precioOriginal: 8.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Pantalla de Paramount+." },
-                    { nombre: "Netflix + Magis TV", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo entretenimiento total: Netflix + App Magis TV." },
-                    { nombre: "Netflix + IPTV Player Pro", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Cine y TV en vivo: Netflix + IPTV Player Pro." },
-                    { nombre: "Netflix + Tele Latino", precio: 7.25, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo familiar: Netflix + Tele Latino." },
-                    { nombre: "Max + Prime Video", precio: 4.50, precioOriginal: 6.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Series exclusivas: 1 Perfil de Max + 1 Pantalla Prime Video." },
-                    { nombre: "Disney+ / Star + Tele Latino", precio: 6.75, precioOriginal: 9.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo deportes y TV: Disney+ Premium + Tele Latino." },
-                    { nombre: "Disney+ / Star + IPTV Player Pro", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales en vivo IPTV." },
-                    { nombre: "Prime Video + Paramount+", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo cine en casa: Prime Video + Paramount+." },
-                    { nombre: "Disney+ / Star + Spotify", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo audio y video: Disney+ Premium + Spotify Premium." },
-                    { nombre: "Netflix + YouTube Premium", precio: 7.75, precioOriginal: 11.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo sin interrupciones: Netflix + YouTube sin anuncios." },
-                    { nombre: "Disney+ / Star + Magis TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales y VOD de Magis TV." },
-                    { nombre: "Netflix + Max + Magis TV", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo triple: Netflix + Max + Magis TV." },
-                    { nombre: "Netflix + IPTV Player Pro + Disney+", precio: 9.75, precioOriginal: 14.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Super combo triple: Netflix + IPTV Pro + Disney+ Premium." },
-                    { nombre: "Netflix + Tele Latino + Disney+", precio: 10.25, precioOriginal: 15.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo máximo entretenimiento: Netflix + Tele Latino + Disney+." },
-                    { nombre: "Paramount+ + Disney+ + IPTV Player Pro", precio: 8.00, precioOriginal: 11.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo variado: Paramount+ + Disney+ Premium + IPTV." },
-                    { nombre: "Netflix + Prime Video + Disney+", precio: 9.00, precioOriginal: 13.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Trilogía de streaming: Netflix + Prime + Disney+." },
-                    { nombre: "Netflix + Max + Disney+", precio: 9.25, precioOriginal: 13.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Trilogía premium: Netflix + Max + Disney+." },
-                    { nombre: "Netflix + Magis TV + Disney+", precio: 10.00, precioOriginal: 14.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Todo el contenido: Netflix + Magis TV + Disney+ Premium." },
-                    { nombre: "Netflix + Prime Video + Tele Latino", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo variedad: Netflix + Prime Video + Tele Latino." },
-                    { nombre: "Plex + Prime Video + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo cine y series en casa: Plex + Prime Video + Paramount+." },
-                    { nombre: "Plex + Vix + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: img.combo, duracion: "1 Mes", descripcion: "Combo latino y cine: Plex + Vix Premium + Paramount+." }
+                    { nombre: "Netflix + Disney+ / Star", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Disney+ Premium por un precio especial." },
+                    { nombre: "Netflix + Prime Video", precio: 6.00, precioOriginal: 8.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 de Prime Video." },
+                    { nombre: "Netflix + Max", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Perfil de Max." },
+                    { nombre: "Netflix + Paramount+", precio: 5.75, precioOriginal: 8.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Lleva 1 Pantalla de Netflix y 1 Pantalla de Paramount+." },
+                    { nombre: "Netflix + Magis TV", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo entretenimiento total: Netflix + App Magis TV." },
+                    { nombre: "Netflix + IPTV Player Pro", precio: 6.75, precioOriginal: 9.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Cine y TV en vivo: Netflix + IPTV Player Pro." },
+                    { nombre: "Netflix + Tele Latino", precio: 7.25, precioOriginal: 10.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo familiar: Netflix + Tele Latino." },
+                    { nombre: "Max + Prime Video", precio: 4.50, precioOriginal: 6.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Series exclusivas: 1 Perfil de Max + 1 Pantalla Prime Video." },
+                    { nombre: "Disney+ / Star + Tele Latino", precio: 6.75, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo deportes y TV: Disney+ Premium + Tele Latino." },
+                    { nombre: "Disney+ / Star + IPTV Player Pro", precio: 6.25, precioOriginal: 8.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales en vivo IPTV." },
+                    { nombre: "Prime Video + Paramount+", precio: 4.25, precioOriginal: 6.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo cine en casa: Prime Video + Paramount+." },
+                    { nombre: "Disney+ / Star + Spotify", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo audio y video: Disney+ Premium + Spotify Premium." },
+                    { nombre: "Netflix + YouTube Premium", precio: 7.75, precioOriginal: 11.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo sin interrupciones: Netflix + YouTube sin anuncios." },
+                    { nombre: "Disney+ / Star + Magis TV", precio: 6.50, precioOriginal: 9.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo Disney+ Premium + Canales y VOD de Magis TV." },
+                    { nombre: "Netflix + Max + Magis TV", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo triple: Netflix + Max + Magis TV." },
+                    { nombre: "Netflix + IPTV Player Pro + Disney+", precio: 9.75, precioOriginal: 14.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Super combo triple: Netflix + IPTV Pro + Disney+ Premium." },
+                    { nombre: "Netflix + Tele Latino + Disney+", precio: 10.25, precioOriginal: 15.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo máximo entretenimiento: Netflix + Tele Latino + Disney+." },
+                    { nombre: "Paramount+ + Disney+ + IPTV Player Pro", precio: 8.00, precioOriginal: 11.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo variado: Paramount+ + Disney+ Premium + IPTV." },
+                    { nombre: "Netflix + Prime Video + Disney+", precio: 9.00, precioOriginal: 13.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Trilogía de streaming: Netflix + Prime + Disney+." },
+                    { nombre: "Netflix + Max + Disney+", precio: 9.25, precioOriginal: 13.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Trilogía premium: Netflix + Max + Disney+." },
+                    { nombre: "Netflix + Magis TV + Disney+", precio: 10.00, precioOriginal: 14.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Todo el contenido: Netflix + Magis TV + Disney+ Premium." },
+                    { nombre: "Netflix + Prime Video + Tele Latino", precio: 8.75, precioOriginal: 12.50, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo variedad: Netflix + Prime Video + Tele Latino." },
+                    { nombre: "Plex + Prime Video + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo cine y series en casa: Plex + Prime Video + Paramount+." },
+                    { nombre: "Plex + Vix + Paramount+", precio: 7.00, precioOriginal: 7.00, disponible: true, imagen: "imagenes-pagina/combos/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Mes", descripcion: "Combo latino y cine: Plex + Vix Premium + Paramount+." }
                 ]
             },
             {
                 titulo: "Categoría VIP",
                 productos: [
-                    { nombre: "Amazon Prime (6 meses)", precio: 20.00, precioOriginal: 25.00, disponible: true, imagen: img.prime, duracion: "6 Meses", descripcion: "Cuenta Prime Video asegurada por 6 meses completos." },
-                    { nombre: "Plex (3 meses)", precio: 14.00, precioOriginal: 18.00, disponible: true, imagen: img.plex, duracion: "3 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 3 meses." },
-                    { nombre: "Plex (7 meses)", precio: 27.00, precioOriginal: 35.00, disponible: true, imagen: img.plex, duracion: "7 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 7 meses." },
-                    { nombre: "Canva Premium (3 meses)", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: img.canva, duracion: "3 Meses", descripcion: "Suscripción Canva Pro en tu correo por 3 meses." },
-                    { nombre: "Canva Premium (12 meses)", precio: 14.00, precioOriginal: 25.00, disponible: true, imagen: img.canva, duracion: "1 Año", descripcion: "Suscripción Canva Pro en tu correo por todo 1 Año." },
-                    { nombre: "PS Plus Deluxe (12 meses)", precio: 113.00, precioOriginal: 135.00, disponible: true, imagen: img.juegos, duracion: "1 Año", descripcion: "Suscripción a PlayStation Plus Deluxe por 1 Año.\n- Acceso al catálogo de juegos clásicos y actuales." },
-                    { nombre: "Flujo TV (3 meses)", precio: 15.00, precioOriginal: 20.00, disponible: true, imagen: img.tv, duracion: "3 Meses", descripcion: "Suscripción Flujo TV sin cortes por 3 meses." },
-                    { nombre: "Flujo TV (7 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: img.tv, duracion: "7 Meses", descripcion: "Suscripción Flujo TV sin cortes por 7 meses." },
-                    { nombre: "IPTV3 Completo (6 meses)", precio: 23.00, precioOriginal: 30.00, disponible: true, imagen: img.iptv, duracion: "6 Meses", descripcion: "Acceso total a servidor IPTVP3 por 6 meses seguidos." },
-                    { nombre: "Xbox Gamepass Principal (2 meses)", precio: 35.00, precioOriginal: 45.00, disponible: true, imagen: img.juegos, duracion: "2 Meses", descripcion: "Cuenta Principal Xbox Gamepass Ultimate por 2 meses." },
-                    { nombre: "Xbox Gamepass Secundaria (2 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: img.juegos, duracion: "2 Meses", descripcion: "Cuenta Secundaria Xbox Gamepass Ultimate por 2 meses." }
+                    { nombre: "Amazon Prime (6 meses)", precio: 20.00, precioOriginal: 25.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "6 Meses", descripcion: "Cuenta Prime Video asegurada por 6 meses completos." },
+                    { nombre: "Plex (3 meses)", precio: 14.00, precioOriginal: 18.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "3 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 3 meses." },
+                    { nombre: "Plex (7 meses)", precio: 27.00, precioOriginal: 35.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "7 Meses", descripcion: "Conexión a servidor Plex Premium garantizada por 7 meses." },
+                    { nombre: "Canva Premium (3 meses)", precio: 7.00, precioOriginal: 10.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "3 Meses", descripcion: "Suscripción Canva Pro en tu correo por 3 meses." },
+                    { nombre: "Canva Premium (12 meses)", precio: 14.00, precioOriginal: 25.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Año", descripcion: "Suscripción Canva Pro en tu correo por todo 1 Año." },
+                    { nombre: "PS Plus Deluxe (12 meses)", precio: 113.00, precioOriginal: 135.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "1 Año", descripcion: "Suscripción a PlayStation Plus Deluxe por 1 Año.\n- Acceso al catálogo de juegos clásicos y actuales." },
+                    { nombre: "Flujo TV (3 meses)", precio: 15.00, precioOriginal: 20.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "3 Meses", descripcion: "Suscripción Flujo TV sin cortes por 3 meses." },
+                    { nombre: "Flujo TV (7 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "7 Meses", descripcion: "Suscripción Flujo TV sin cortes por 7 meses." },
+                    { nombre: "IPTV3 Completo (6 meses)", precio: 23.00, precioOriginal: 30.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "6 Meses", descripcion: "Acceso total a servidor IPTVP3 por 6 meses seguidos." },
+                    { nombre: "Xbox Gamepass Principal (2 meses)", precio: 35.00, precioOriginal: 45.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "2 Meses", descripcion: "Cuenta Principal Xbox Gamepass Ultimate por 2 meses." },
+                    { nombre: "Xbox Gamepass Secundaria (2 meses)", precio: 28.00, precioOriginal: 38.00, disponible: true, imagen: "imagenes-pagina/categoria-vip/AQUÍ_VA_EL_NOMBRE_DE_TU_FOTO.png", duracion: "2 Meses", descripcion: "Cuenta Secundaria Xbox Gamepass Ultimate por 2 meses." }
                 ]
             }
         ];
