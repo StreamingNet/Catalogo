@@ -3,342 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Ecuador | Catálogo Completo</title>
+    <title>Premium Ecuador | Sistema Integral Seguro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-blue: #0a335f;
-            --brand-hover: #0251a2;
-            --bg-color: #f5f5f5;
-            --text-color: #4f5258;
-            --whatsapp-green: #25D366;
-            --unavailable: #f44336;
+            --brand-blue: #0a335f; --brand-hover: #0251a2; --bg-color: #f5f5f5;
+            --text-color: #4f5258; --whatsapp-green: #25D366; --unavailable: #f44336;
             --discount-color: #ff6600;
         }
-
-        body { 
-            background-color: var(--bg-color); 
-            font-family: 'Lato', sans-serif; 
-            color: var(--text-color);
-        }
+        body { background-color: var(--bg-color); font-family: 'Lato', sans-serif; color: var(--text-color); }
         
         .navbar-custom { 
-            background-color: var(--brand-blue); 
-            color: white; 
-            padding: 15px; 
-            text-align: center; 
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600; 
-            font-size: 1.5rem; 
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background-color: var(--brand-blue); color: white; padding: 15px; 
+            font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.5rem; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
         }
+        .admin-btn { position: absolute; right: 20px; background: none; border: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s; opacity: 0.6; color: white;}
+        .admin-btn:hover { opacity: 1; }
 
-        .sidebar-menu {
-            position: sticky;
-            top: 80px; 
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-right: 15px;
-        }
-
-        .menu-btn {
-            text-align: left;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            background: white;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .menu-btn:hover, .menu-btn.active {
-            background-color: var(--brand-blue);
-            color: white;
-            border-color: var(--brand-blue);
-        }
-
-        .section-title { 
-            margin: 0 0 20px 0; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            color: #333; 
-            font-size: 1.4rem;
-            border-bottom: 3px solid var(--brand-blue);
-            display: inline-block;
-            padding-bottom: 5px;
-            font-family: 'Poppins', sans-serif;
-        }
+        /* Tienda */
+        .sidebar-menu { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 8px; padding-right: 15px; }
+        .menu-btn { text-align: left; padding: 12px 20px; border-radius: 8px; border: 1px solid #ddd; background: white; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--text-color); transition: 0.3s; cursor: pointer; }
+        .menu-btn:hover, .menu-btn.active { background-color: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+        .section-title { margin: 0 0 20px 0; font-weight: 700; text-transform: uppercase; color: #333; font-size: 1.4rem; border-bottom: 3px solid var(--brand-blue); display: inline-block; padding-bottom: 5px; font-family: 'Poppins', sans-serif; }
         
-        .card-product { 
-            border: none; 
-            border-radius: 12px; 
-            background: white; 
-            transition: all 0.3s ease; 
-            padding: 0; 
-            text-align: center; 
-            height: 100%; 
-            position: relative; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer; 
-        }
-        
-        .card-product:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            border: 1px solid var(--brand-blue);
-        }
-
-        .card-img-top {
-            width: 100%;
-            height: 160px; 
-            object-fit: contain; 
-            background-color: #fff;
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .card-body-custom {
-            padding: 15px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .duracion-tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(10, 51, 95, 0.08); 
-            color: var(--brand-blue); 
-            border: 1px solid rgba(10, 51, 95, 0.15); 
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 50px;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            align-self: center;
-            transition: all 0.3s ease;
-        }
-        
-        .duracion-tag svg { margin-right: 5px; width: 13px; height: 13px; }
-        .card-product:hover .duracion-tag { background-color: var(--brand-blue); color: white; }
-
-        .service-name { 
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem; 
-            color: #000; 
-            margin-bottom: 5px; 
-            font-weight: 700; 
-            line-height: 1.2;
-        }
-
+        .card-product { border: none; border-radius: 12px; background: white; transition: 0.3s; text-align: center; height: 100%; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; cursor: pointer; }
+        .card-product:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid var(--brand-blue); }
+        .card-img-top { width: 100%; height: 160px; object-fit: contain; padding: 15px; border-bottom: 1px solid #f0f0f0; }
+        .card-body-custom { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .duracion-tag { display: inline-flex; align-items: center; justify-content: center; background-color: rgba(10, 51, 95, 0.08); color: var(--brand-blue); font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; align-self: center; }
+        .service-name { font-family: 'Poppins', sans-serif; font-size: 1rem; color: #000; margin-bottom: 5px; font-weight: 700; line-height: 1.2; }
         .price-container { margin-bottom: 5px; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        
-        .old-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        .price-tag { 
-            font-size: 1.4rem; 
-            font-weight: 900; 
-            color: var(--brand-blue); 
-        }
-        
+        .old-price { text-decoration: line-through; color: #999; font-size: 1rem; }
+        .price-tag { font-size: 1.4rem; font-weight: 900; color: var(--brand-blue); }
         .card-agotado { opacity: 0.7; pointer-events: none; }
+        .badge-stock { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; color: white; background-color: var(--unavailable); z-index: 10; }
+        .badge-ahorro { position: absolute; top: 10px; right: 10px; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; color: white; background-color: var(--discount-color); z-index: 10; }
         
-        .badge-stock { 
-            position: absolute; 
-            top: 10px; 
-            left: 10px; 
-            padding: 4px 10px; 
-            border-radius: 20px; 
-            font-size: 0.7rem; 
-            font-weight: bold; 
-            color: white; 
-            background-color: var(--unavailable);
-            z-index: 10;
-        }
-
-        .badge-ahorro {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: white;
-            background-color: var(--discount-color);
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(255, 102, 0, 0.4);
-            letter-spacing: 0.5px;
-        }
-
-        .btn-buy-large {
-            background-color: var(--whatsapp-green); 
-            color: white; 
-            border-radius: 8px; 
-            font-weight: 700; 
-            font-size: 1.2rem;
-            padding: 12px 20px; 
-            width: 100%; 
-            border: none; 
-            transition: 0.3s; 
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-        .btn-buy-large:hover { background-color: #20b858; color: white; }
-
-        .payment-method-btn {
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            gap: 15px;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #333;
-            transition: 0.2s;
-        }
-        .payment-method-btn:hover {
-            border-color: var(--brand-blue);
-            background-color: #f0f8ff;
-        }
-        .payment-icon { font-size: 1.5rem; }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 35px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 65px;
-            height: 65px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float:hover { background-color: #20b858; transform: scale(1.1); color: white;}
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25d366; border-radius: 50px; padding: 12px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 2000; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
         .whatsapp-icon { width: 40px; height: 40px; }
+        .btn-buy-large { background-color: var(--whatsapp-green); color: white; border-radius: 8px; font-weight: 700; font-size: 1.2rem; padding: 12px; width: 100%; border: none; text-transform: uppercase; }
 
+        /* Panel Administrativo */
+        .admin-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-top: 4px solid var(--brand-blue); }
+        .saldo-box { background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 5px solid #2c3e50; text-align: center; min-width: 160px; }
+        .semaforo { display: inline-block; width: 15px; height: 15px; border-radius: 50%; }
+        .verde { background-color: #2ecc71; } .amarillo { background-color: #f1c40f; } .rojo { background-color: #e74c3c; } .gris { background-color: #95a5a6; }
+        .resumen-caja { background-color: #e8f4f8; padding: 15px; border-radius: 8px; border: 1px solid #bce0fd; }
+        
         @media (max-width: 768px) {
-            .sidebar-menu {
-                flex-direction: row;
-                flex-wrap: wrap; 
-                justify-content: center; 
-                padding-bottom: 15px;
-                padding-right: 0;
-                top: 60px; 
-                background-color: var(--bg-color);
-                z-index: 900;
-                border-bottom: 1px solid #ddd;
-                margin-bottom: 20px;
-            }
-            .menu-btn { 
-                flex: 0 1 auto; 
-                padding: 8px 12px; 
-                font-size: 0.85rem; 
-                text-align: center;
-            }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
-            .whatsapp-icon { width: 30px; height: 30px; }
+            .sidebar-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; top: 60px; background-color: var(--bg-color); z-index: 900; border-bottom: 1px solid #ddd; padding-bottom: 15px;}
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar-custom">PREMIUM ECUADOR</div>
+    <div class="navbar-custom">
+        <span>PREMIUM ECUADOR</span>
+        <button class="admin-btn" id="btn-estado-panel" onclick="gestionarBotonPanel()">⚙️ Acceder</button>
+    </div>
 
-    <div class="container-fluid" style="max-width: 1400px; padding-top: 20px; padding-bottom: 50px;">
+    <div id="vista-cliente" class="container-fluid" style="max-width: 1400px; padding-top: 20px; padding-bottom: 50px;">
         <div class="row">
-            
             <div class="col-md-4 col-lg-3">
-                <div class="sidebar-menu" id="menu-categorias">
-                    <!-- Las categorías se cargarán aquí -->
-                </div>
+                <div class="sidebar-menu" id="menu-categorias"></div>
             </div>
-
             <div class="col-md-8 col-lg-9">
                 <h2 class="section-title" id="titulo-categoria-activa">Cargando catálogo...</h2>
-                <div class="row g-3" id="contenedor-productos">
-                    <p class="text-center mt-4">Conectando con la base de datos, por favor espera...</p>
-                </div>
+                <div class="row g-3" id="contenedor-productos"></div>
             </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content p-4">
+                <h5 class="text-center mb-3 fw-bold" style="font-family:'Poppins';">Llave Digital de Acceso</h5>
+                <div class="mb-3">
+                    <label class="form-label">Correo Administrador</label>
+                    <input type="email" class="form-control" id="login_email" placeholder="admin@correo.com">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contraseña Cifrada</label>
+                    <input type="password" class="form-control" id="login_pass" placeholder="••••••••">
+                </div>
+                <button class="btn btn-primary w-100" onclick="ejecutarLogin()">Iniciar Sesión Segura</button>
+            </div>
         </div>
     </div>
 
     <div class="modal fade" id="modalProducto" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content text-center p-4">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                <img id="modal-img" src="" style="max-height: 160px; object-fit: contain; margin-bottom: 10px;">
+                <div id="modal-duracion" class="duracion-tag"></div>
+                <h3 id="modal-title" class="service-name" style="font-size: 1.6rem;"></h3>
+                <div class="price-container">
+                    <span id="modal-old-price" class="old-price" style="font-size: 1.3rem;"></span>
+                    <span class="price-tag" id="modal-price" style="font-size: 2.2rem;"></span>
                 </div>
-                <div class="modal-body text-center pt-0 px-4 pb-4">
-                    <img id="modal-img" src="" style="max-height: 160px; object-fit: contain; margin-bottom: 10px;">
-                    
-                    <div id="modal-duracion" class="duracion-tag" style="font-size: 0.9rem; margin-bottom: 15px; pointer-events: none;"></div>
-                    
-                    <h3 id="modal-title" class="service-name" style="font-size: 1.6rem; margin-bottom: 5px;"></h3>
-                    <div id="modal-cat" style="color: #888; font-size: 0.9rem; margin-bottom: 15px;"></div>
-                    
-                    <div class="price-container" style="justify-content: center; gap: 15px; margin-bottom: 10px;">
-                        <span id="modal-old-price" class="old-price" style="font-size: 1.3rem;"></span>
-                        <span class="price-tag" id="modal-price" style="font-size: 2.2rem;"></span>
-                    </div>
-                    <div id="modal-ahorro-badge" style="display: none; background-color: var(--discount-color); color: white; padding: 4px 15px; border-radius: 20px; font-weight: bold; margin: 0 auto 20px auto; width: fit-content; box-shadow: 0 2px 5px rgba(255, 102, 0, 0.4);"></div>
-                    
-                    <button class="btn-buy-large mb-4" onclick="abrirModalPago()">¡COMPRAR AHORA!</button>
-                    
-                    <div class="text-start p-3" style="background-color: #f8f9fa; border-radius: 8px;">
-                        <h5 style="font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--brand-blue);">Descripción y Garantía:</h5>
-                        <p id="modal-desc" style="font-size: 0.90rem; color: #555; margin-bottom: 0; white-space: pre-line; line-height: 1.5;"></p>
-                    </div>
-                </div>
+                <button class="btn-buy-large mb-3 mt-2" onclick="comprarPorWhatsapp()">¡COMPRAR AHORA!</button>
+                <div class="text-start p-3 bg-light rounded"><small id="modal-desc" style="white-space: pre-line;"></small></div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modalPago" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title" style="font-family: 'Poppins', sans-serif; font-weight: 600;">¿Cómo deseas pagar?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div id="vista-admin" class="container mt-4 d-none">
+        <ul class="nav nav-pills mb-4 justify-content-center" id="adminTabs">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-ventas">Caja y Ventas</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-saldos">Saldos y Recargas</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-catalogo">Gestor de Catálogo</button></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab-ventas">
+                <div class="admin-card" id="seccion_formulario">
+                    <h4>🛒 Registrar Nueva Venta</h4>
+                    <div class="row g-3">
+                        <div class="col-md-3"><input type="text" class="form-control" id="nombre" placeholder="Nombre Cliente"></div>
+                        <div class="col-md-3"><input type="text" class="form-control" id="telefono" placeholder="WhatsApp"></div>
+                        <div class="col-md-3"><select class="form-select" id="producto"></select></div>
+                        <div class="col-md-3"><select class="form-select" id="plat_venta" onchange="calcularDesdeMargen()"></select></div>
+                        <div class="col-md-3"><input type="number" class="form-control" id="costo_cop" placeholder="Costo (COP)" oninput="calcularDesdeMargen()"></div>
+                        <div class="col-md-2"><input type="number" class="form-control" id="margen" placeholder="Margen %" value="30" oninput="calcularDesdeMargen()"></div>
+                        <div class="col-md-3"><input type="number" class="form-control" id="precio_usd" placeholder="Cobrar (USD)" oninput="calcularDesdePrecio()"></div>
+                        <div class="col-md-4"><input type="date" class="form-control" id="vence"></div>
+                    </div>
+                    <div class="resumen-caja d-flex justify-content-around mt-3">
+                        <div class="text-center"><small>Débito:</small><h4 id="txt_debito" class="text-danger m-0">$0.00</h4></div>
+                        <div class="text-center"><small>Ganancia:</small><h4 id="txt_ganancia" class="text-success m-0">$0.00</h4></div>
+                        <div class="text-center"><small>Cobrar:</small><h4 id="txt_cobro" class="text-warning m-0">$0.00</h4></div>
+                    </div>
+                    <button class="btn btn-success w-100 mt-3" onclick="guardarVenta()">✅ Confirmar Venta</button>
                 </div>
-                <div class="modal-body p-4" id="contenedor-metodos"></div>
+
+                <div class="admin-card table-responsive">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h4>📋 Historial General</h4>
+                        <div><strong class="text-danger">Inv: <span id="total_costo">$0.00</span></strong> | <strong class="text-success">Ganancia: <span id="total_ganancia">$0.00</span></strong></div>
+                    </div>
+                    <table class="table table-sm table-hover align-middle" id="tablaVentas">
+                        <thead class="table-light"><tr><th>Est.</th><th>Cliente</th><th>Prod.</th><th>Vence</th><th>Plat.</th><th>Costo</th><th>Precio</th><th>Ganancia</th><th>Acción</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-saldos">
+                <div class="admin-card">
+                    <h4>💰 Tus Plataformas</h4>
+                    <div class="d-flex gap-3 mb-4 overflow-auto" id="panel_saldos"></div>
+                    <div class="row g-2 align-items-center bg-light p-3 rounded">
+                        <div class="col-md-3"><select class="form-select" id="sel_plat_gestion"></select></div>
+                        <div class="col-md-3"><input type="number" class="form-control" id="input_usd" placeholder="Dólares"></div>
+                        <div class="col-md-3"><input type="number" class="form-control" id="input_tasa" placeholder="Tasa pagada"></div>
+                        <div class="col-md-3"><button class="btn btn-primary w-100" onclick="recargarSaldo()">➕ Reportar</button></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger mt-3" onclick="restablecerSaldoSeguro()">🚨 Resetear una Plataforma a $0</button>
+                </div>
+
+                <div class="admin-card table-responsive">
+                    <h4>🔄 Historial de Recargas</h4>
+                    <table class="table table-sm table-hover" id="tablaRecargas">
+                        <thead class="table-light"><tr><th>Fecha</th><th>Plataforma</th><th>USD</th><th>Tasa</th><th>Total COP</th><th>Acción</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-catalogo">
+                <div class="admin-card">
+                    <h4>📦 Crear / Editar Producto</h4>
+                    <input type="hidden" id="cat_id">
+                    <div class="row g-3">
+                        <div class="col-md-4"><input type="text" class="form-control" id="cat_categoria" placeholder="Categoría (Ej: Combos)"></div>
+                        <div class="col-md-8"><input type="text" class="form-control" id="cat_nombre" placeholder="Nombre (Ej: Netflix 1 Mes)"></div>
+                        <div class="col-md-4"><input type="number" class="form-control" id="cat_precio" step="0.01" placeholder="Precio de Venta ($)"></div>
+                        <div class="col-md-4"><input type="number" class="form-control" id="cat_precio_orig" step="0.01" placeholder="Precio Original ($)"></div>
+                        <div class="col-md-4"><input type="text" class="form-control" id="cat_duracion" placeholder="Duración (Ej: 30 Días)"></div>
+                        <div class="col-12"><input type="text" class="form-control" id="cat_imagen" placeholder="URL de la imagen"></div>
+                        <div class="col-12"><textarea class="form-control" id="cat_desc" rows="3" placeholder="Descripción..."></textarea></div>
+                        <div class="col-md-6 d-flex gap-4 align-items-center">
+                            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="cat_disp" checked><label class="form-check-label">Hay Stock</label></div>
+                            <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="cat_mostrar" checked><label class="form-check-label">Mostrar en Tienda</label></div>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <button class="btn btn-secondary me-2" onclick="limpiarFormCatalogo()">Limpiar</button>
+                            <button class="btn btn-success" onclick="guardarProducto()">💾 Guardar Producto</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card table-responsive">
+                    <table class="table table-sm table-hover align-middle" id="tablaGestorCatalogo">
+                        <thead class="table-light"><tr><th>Categoría</th><th>Nombre</th><th>Precio</th><th>Duración</th><th>Visible</th><th>Stock</th><th>Acciones</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -347,208 +212,253 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
     </a>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+        const supabase = createClient('https://drlqoaabqqmltfbapjiq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRybHFvYWFicXFtbHRmYmFwamlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyOTk1ODcsImV4cCI6MjA5Njg3NTU4N30.auuR5Cbi02dQfp9y4dCBkYHy8JkA4zTX1wqTw8J0Mds');
 
-    <script>
-        // ==========================================
-        // 1. CONFIGURA TU NÚMERO Y ENLACE AQUÍ
-        // ==========================================
-        const miNumero = "593961380257"; // <--- PON TU NÚMERO DE WHATSAPP AQUÍ
-        const urlGoogleSheets = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSHA42FSVds1NUySRpzp5nHFYsE2O0bIfk4CCNXQK4XSYBbMGpGRHBJPytbxWKW8XeAEzlKfvQpgyQz/pub?output=tsv'; // <--- PEGA AQUÍ EL ENLACE .TSV PUBLICADO DE TU HOJA
+        const miNumero = "593961380257"; 
+        const terminosGarantia = "\n\n✅ Tiempo garantizado por el tiempo contratado.\n🔒 REGLA ESTRICTA: Utiliza ÚNICAMENTE el perfil entregado.";
+        document.getElementById("btn-whatsapp-general").href = `https://wa.me/${miNumero}?text=Hola quiero mas informacion`;
 
-        const metodosDePago = [
-            { nombre: "Banco Pichincha", icono: "🏦" },
-            { nombre: "Banco Guayaquil", icono: "🏦" },
-            { nombre: "DeUna!", icono: "📱" },
-            { nombre: "Binance (USDT)", icono: "🟡" }
-        ];
+        let tasas = {};
+        let catalogoGlobal = [];
+        let catActual = "", prodActual = null;
+        let modalProd = new bootstrap.Modal(document.getElementById('modalProducto'));
+        let modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'));
 
-        const terminosGarantia = "\n\n✅ Tiempo garantizado: Tu membresía está 100% cubierta por el tiempo contratado.\n⚠️ Aviso: Al ser servicios digitales, pueden presentar caídas o errores temporales que demoran un tiempo en solucionarse. Agradecemos tu paciencia.\n🔒 REGLA ESTRICTA: Utiliza ÚNICAMENTE el perfil y acceso que se te entregó. Modificar datos o usar otros perfiles anulará tu garantía.\n♻️ Soporte: Por motivos de caídas o compatibilidad, es posible que te entreguemos nuevos datos de acceso para garantizar que cumplas tus días de servicio.";
-
-        let catalogo = [];
-        let prodActual = null;
-        let catActual = "";  
-        let modalProd;
-        let modalPago;
-
-        document.addEventListener("DOMContentLoaded", () => {
-            modalProd = new bootstrap.Modal(document.getElementById('modalProducto'));
-            modalPago = new bootstrap.Modal(document.getElementById('modalPago'));
-            
-            const mensajeGeneral = "Hola quiero mas informacion ¿Pueden ayudarme por favor?";
-            document.getElementById("btn-whatsapp-general").href = `https://wa.me/${miNumero}?text=${encodeURIComponent(mensajeGeneral)}`;
-
-            cargarCatalogoDesdeSheets();
+        // ESCUCHAR ESTADO DE AUTENTICACIÓN
+        supabase.auth.onAuthStateChange((event, session) => {
+            const btn = document.getElementById('btn-estado-panel');
+            if (session) {
+                btn.innerHTML = "⚙️ Panel Admin";
+            } else {
+                btn.innerHTML = "⚙️ Acceder";
+                regresarATiendaPublica();
+            }
         });
 
-        async function cargarCatalogoDesdeSheets() {
-            try {
-                const respuesta = await fetch(urlGoogleSheets);
-                const datosText = await respuesta.text();
-
-                const lineas = datosText.split('\n');
-                const catalogoMap = new Map();
-
-                for (let i = 1; i < lineas.length; i++) {
-                    if (!lineas[i].trim()) continue;
-
-                    const columnas = lineas[i].split('\t');
-
-                    // Verificamos que tenga las 9 columnas: Categoria, Nombre, Precio, PrecioOriginal, Disponible, Mostrar, Imagen, Duracion, Descripcion
-                    if (columnas.length >= 9) {
-                        const catNombre = columnas[0].trim();
-                        
-                        const producto = {
-                            nombre: columnas[1].trim(),
-                            precio: parseFloat(columnas[2].trim()),
-                            precioOriginal: parseFloat(columnas[3].trim()),
-                            disponible: columnas[4].trim().toLowerCase() === 'si',
-                            mostrar: columnas[5].trim().toLowerCase() !== 'no', // Filtro mágico
-                            imagen: columnas[6].trim(),
-                            duracion: columnas[7].trim(),
-                            descripcion: columnas[8] ? columnas[8].trim() : ''
-                        };
-
-                        if (!catalogoMap.has(catNombre)) {
-                            catalogoMap.set(catNombre, { titulo: catNombre, productos: [] });
-                        }
-
-                        catalogoMap.get(catNombre).productos.push(producto);
-                    }
+        window.gestionarBotonPanel = async function() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                modalLogin.show();
+            } else {
+                const vistaAdmin = document.getElementById('vista-admin');
+                if (vistaAdmin.classList.contains('d-none')) {
+                    document.getElementById('vista-cliente').classList.add('d-none');
+                    document.getElementById('btn-whatsapp-general').classList.add('d-none');
+                    vistaAdmin.classList.remove('d-none');
+                    document.getElementById('btn-estado-panel').innerHTML = "❌ Salir del Panel";
+                    cargarTodoAdmin();
+                } else {
+                    regresarATiendaPublica();
                 }
-
-                catalogo = Array.from(catalogoMap.values());
-                inicializarPantalla();
-
-            } catch (error) {
-                console.error("Error cargando el catálogo desde Sheets:", error);
-                document.getElementById("contenedor-productos").innerHTML = "<p class='text-center mt-5' style='color:red;'>No se pudo cargar el catálogo. Verifica que el enlace TSV sea correcto.</p>";
             }
         }
 
-        function inicializarPantalla() {
-            const menuCategorias = document.getElementById("menu-categorias");
-            menuCategorias.innerHTML = ""; 
+        window.ejecutarLogin = async function() {
+            let email = document.getElementById('login_email').value;
+            let pass = document.getElementById('login_pass').value;
             
-            catalogo.forEach((categoria, index) => {
-                const isActive = index === 0 ? "active" : "";
-                menuCategorias.innerHTML += `
-                    <button class="menu-btn ${isActive}" id="btn-cat-${index}" onclick="mostrarCategoria(${index})">
-                        ${categoria.titulo}
-                    </button>
-                `;
-            });
-
-            const divPagos = document.getElementById("contenedor-metodos");
-            divPagos.innerHTML = "";
-            metodosDePago.forEach(metodo => {
-                divPagos.innerHTML += `
-                    <button class="payment-method-btn" onclick="enviarPedido('${metodo.nombre}')">
-                        <span class="payment-icon">${metodo.icono}</span>
-                        <span>${metodo.nombre}</span>
-                    </button>
-                `;
-            });
-
-            if(catalogo.length > 0) {
-                mostrarCategoria(0);
+            const { data, error } = await supabase.auth.signInWithPassword({ email: email, password: pass });
+            
+            if (error) {
+                alert("❌ Error de autenticación: " + error.message);
+            } else {
+                modalLogin.hide();
+                document.getElementById('login_email').value = '';
+                document.getElementById('login_pass').value = '';
+                gestionarBotonPanel();
             }
         }
 
-        function mostrarCategoria(index) {
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-cat-${index}`).classList.add('active');
-            
-            const categoria = catalogo[index];
-            document.getElementById("titulo-categoria-activa").textContent = categoria.titulo;
-            
-            const contenedor = document.getElementById("contenedor-productos");
-            contenedor.innerHTML = "";
-            
-            categoria.productos.forEach((prod, prodIndex) => {
-                // Si en el Excel pusiste "no" en la columna Mostrar, este producto se salta y no se dibuja
-                if (prod.mostrar === false) return; 
-                
-                // Si en el Excel pusiste "no" en la columna Disponible, se dibuja pero bloqueado y con etiqueta
+        function regresarATiendaPublica() {
+            document.getElementById('vista-admin').classList.add('d-none');
+            document.getElementById('vista-cliente').classList.remove('d-none');
+            document.getElementById('btn-whatsapp-general').classList.remove('d-none');
+            document.getElementById('btn-estado-panel').innerHTML = "⚙️ Panel Admin";
+            cargarCatalogoPublico();
+        }
+
+        async function cargarTodoAdmin() {
+            await cargarSaldos();
+            cargarVentas();
+            cargarRecargas();
+            cargarTablaGestorCatalogo();
+        }
+
+        // TIENDA PÚBLICA
+        async function cargarCatalogoPublico() {
+            const { data } = await supabase.from('catalogo').select('*').eq('mostrar', true).order('categoria', { ascending: true });
+            if(!data) return;
+            catalogoGlobal = data;
+            let categoriasMap = new Map();
+            data.forEach(p => {
+                if(!categoriasMap.has(p.categoria)) categoriasMap.set(p.categoria, []);
+                categoriasMap.get(p.categoria).push(p);
+            });
+            const menu = document.getElementById("menu-categorias");
+            const selProdAdmin = document.getElementById("producto");
+            menu.innerHTML = ""; selProdAdmin.innerHTML = "<option value=''>Seleccionar Producto...</option>";
+            let i = 0;
+            for (let [cat, prods] of categoriasMap) {
+                let active = i === 0 ? "active" : "";
+                menu.innerHTML += `<button class="menu-btn ${active}" onclick="renderizarCategoria('${cat}')">${cat}</button>`;
+                if(i === 0) renderizarCategoria(cat, prods);
+                prods.forEach(p => { selProdAdmin.innerHTML += `<option value="${p.nombre}">${p.nombre}</option>`; });
+                i++;
+            }
+        }
+
+        window.renderizarCategoria = function(categoriaNombre) {
+            document.querySelectorAll('.menu-btn').forEach(b => {
+                b.classList.remove('active'); if(b.innerText === categoriaNombre) b.classList.add('active');
+            });
+            document.getElementById("titulo-categoria-activa").textContent = categoriaNombre;
+            const contenedor = document.getElementById("contenedor-productos"); contenedor.innerHTML = "";
+            let prods = catalogoGlobal.filter(p => p.categoria === categoriaNombre);
+            prods.forEach(prod => {
                 const badgeOut = prod.disponible ? '' : '<span class="badge-stock">AGOTADO</span>';
-                
-                let badgeAhorro = '';
                 let htmlPrecios = `<div class="price-tag">$${prod.precio.toFixed(2)}</div>`;
-                
-                if (prod.precioOriginal > prod.precio) {
-                    const ahorroNum = (prod.precioOriginal - prod.precio).toFixed(2);
-                    badgeAhorro = `<span class="badge-ahorro">Ahorro $${ahorroNum}</span>`;
-                    htmlPrecios = `
-                        <div class="price-container">
-                            <span class="old-price">$${prod.precioOriginal.toFixed(2)}</span>
-                            <span class="price-tag">$${prod.precio.toFixed(2)}</span>
-                        </div>
-                    `;
+                if (prod.precio_original > prod.precio) {
+                    htmlPrecios = `<div class="price-container"><span class="old-price">$${prod.precio_original.toFixed(2)}</span><span class="price-tag">$${prod.precio.toFixed(2)}</span></div><span class="badge-ahorro">Ahorro $${(prod.precio_original - prod.precio).toFixed(2)}</span>`;
                 }
-                
-                const iconoReloj = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
-
-                contenedor.innerHTML += `
-                    <div class="col-6 col-md-6 col-lg-4 col-xl-3">
-                        <div class="card card-product ${prod.disponible ? '' : 'card-agotado'}" onclick="${prod.disponible ? `abrirDetalle(${index}, ${prodIndex})` : ''}">
-                            ${badgeOut}
-                            ${badgeAhorro}
-                            <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
-                            <div class="card-body-custom">
-                                <span class="duracion-tag">${iconoReloj} ${prod.duracion}</span>
-                                <div class="service-name">${prod.nombre}</div>
-                                ${htmlPrecios}
-                            </div>
-                        </div>
-                    </div>
-                `;
+                contenedor.innerHTML += `<div class="col-6 col-md-6 col-lg-4 col-xl-3"><div class="card card-product ${prod.disponible ? '' : 'card-agotado'}" onclick='abrirDetalle(${JSON.stringify(prod)})'>${badgeOut} ${htmlPrecios}<img src="${prod.imagen}" class="card-img-top"><div class="card-body-custom"><span class="duracion-tag">⏱️ ${prod.duracion}</span><div class="service-name">${prod.nombre}</div></div></div></div>`;
             });
         }
 
-        function abrirDetalle(catIndex, prodIndex) {
-            catActual = catalogo[catIndex].titulo;
-            prodActual = catalogo[catIndex].productos[prodIndex];
-
+        window.abrirDetalle = function(prod) {
+            prodActual = prod; catActual = prodActual.categoria;
             document.getElementById("modal-img").src = prodActual.imagen;
             document.getElementById("modal-title").textContent = prodActual.nombre;
-            document.getElementById("modal-cat").textContent = catActual;
             document.getElementById("modal-price").textContent = `$${prodActual.precio.toFixed(2)}`;
-            
-            const iconoReloj = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px; width:14px; height:14px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`;
-            document.getElementById("modal-duracion").innerHTML = `${iconoReloj} ${prodActual.duracion}`;
-            
-            const modalOldPrice = document.getElementById("modal-old-price");
-            const modalAhorroBadge = document.getElementById("modal-ahorro-badge");
-            
-            if (prodActual.precioOriginal > prodActual.precio) {
-                const ahorroNum = (prodActual.precioOriginal - prodActual.precio).toFixed(2);
-                modalOldPrice.textContent = `$${prodActual.precioOriginal.toFixed(2)}`;
-                modalOldPrice.style.display = "inline";
-                
-                modalAhorroBadge.textContent = `¡Ahorras $${ahorroNum}!`;
-                modalAhorroBadge.style.display = "block";
-            } else {
-                modalOldPrice.style.display = "none";
-                modalAhorroBadge.style.display = "none";
-            }
-
-            document.getElementById("modal-desc").textContent = prodActual.descripcion + terminosGarantia;
-
+            document.getElementById("modal-duracion").innerHTML = `⏱️ ${prodActual.duracion}`;
+            document.getElementById("modal-desc").textContent = (prodActual.descripcion || "") + terminosGarantia;
+            const oldPrice = document.getElementById("modal-old-price");
+            if(prodActual.precio_original > prodActual.precio) { oldPrice.textContent = `$${prodActual.precio_original.toFixed(2)}`; oldPrice.style.display="inline"; } else { oldPrice.style.display="none"; }
             modalProd.show();
         }
 
-        function abrirModalPago() {
-            modalProd.hide(); 
-            modalPago.show(); 
+        window.comprarPorWhatsapp = function() {
+            window.open(`https://wa.me/${miNumero}?text=${encodeURIComponent(`Hola, quiero comprar *${prodActual.nombre}* a *$${prodActual.precio.toFixed(2)}*.\nCategoría: ${catActual}`)}`, '_blank');
         }
 
-        function enviarPedido(metodoElegido) {
-            const texto = `Hola, quiero comprar *${prodActual.nombre}* a *$${prodActual.precio.toFixed(2)}*.\nCategoría: ${catActual}\nMétodo de pago seleccionado: *${metodoElegido}*`;
-            const url = `https://wa.me/${miNumero}?text=${encodeURIComponent(texto)}`;
-            
-            window.open(url, '_blank');
-            modalPago.hide();
+        // GEESTOR CATÁLOGO
+        async function cargarTablaGestorCatalogo() {
+            const { data } = await supabase.from('catalogo').select('*').order('categoria', { ascending: true });
+            const tbody = document.querySelector("#tablaGestorCatalogo tbody"); tbody.innerHTML = ""; if(!data) return;
+            data.forEach(p => {
+                tbody.innerHTML += `<tr><td>${p.categoria}</td><td><b>${p.nombre}</b></td><td>$${p.precio}</td><td>${p.duracion}</td><td>${p.mostrar?"✅":"❌"}</td><td>${p.disponible?"✅":"❌"}</td><td><button class="btn btn-sm btn-outline-primary" onclick='cargarEditProducto(${JSON.stringify(p)})'>✏️</button> <button class="btn btn-sm btn-outline-danger" onclick="eliminarProducto(${p.id}, '${p.nombre}')">🗑️</button></td></tr>`;
+            });
         }
+
+        window.cargarEditProducto = function(p) {
+            document.getElementById('cat_id').value = p.id; document.getElementById('cat_categoria').value = p.categoria; document.getElementById('cat_nombre').value = p.nombre; document.getElementById('cat_precio').value = p.precio; document.getElementById('cat_precio_orig').value = p.precio_original || ''; document.getElementById('cat_duracion').value = p.duracion; document.getElementById('cat_imagen').value = p.imagen; document.getElementById('cat_desc').value = p.descripcion; document.getElementById('cat_disp').checked = p.disponible; document.getElementById('cat_mostrar').checked = p.mostrar;
+        }
+
+        window.limpiarFormCatalogo = function() {
+            document.querySelectorAll('#tab-catalogo input, #tab-catalogo textarea').forEach(i => i.value = '');
+            document.getElementById('cat_disp').checked = true; document.getElementById('cat_mostrar').checked = true;
+        }
+
+        window.guardarProducto = async function() {
+            let id = document.getElementById('cat_id').value;
+            let payload = { categoria: document.getElementById('cat_categoria').value, nombre: document.getElementById('cat_nombre').value, precio: parseFloat(document.getElementById('cat_precio').value), precio_original: parseFloat(document.getElementById('cat_precio_orig').value) || null, duracion: document.getElementById('cat_duracion').value, imagen: document.getElementById('cat_imagen').value, descripcion: document.getElementById('cat_desc').value, disponible: document.getElementById('cat_disp').checked, mostrar: document.getElementById('cat_mostrar').checked };
+            if(!payload.categoria || !payload.nombre || isNaN(payload.precio)) return alert("Faltan campos obligatorios");
+            if(id) await supabase.from('catalogo').update(payload).eq('id', id); else await supabase.from('catalogo').insert(payload);
+            limpiarFormCatalogo(); cargarTablaGestorCatalogo(); alert("Guardado");
+        }
+
+        window.eliminarProducto = async function(id, n) { if(confirm(`¿Borrar ${n}?`)) { await supabase.from('catalogo').delete().eq('id', id); cargarTablaGestorCatalogo(); } }
+
+        // MÓDULOS DE VENTA Y SALDO RESPALDADOS POR RLS
+        window.calcularDesdeMargen = function() {
+            let c = parseFloat(document.getElementById('costo_cop').value) || 0, m = parseFloat(document.getElementById('margen').value) || 0, t = tasas[document.getElementById('plat_venta').value] || 3200;
+            let cU = c / t, g = cU * (m/100), pf = cU + g; document.getElementById('precio_usd').value = pf.toFixed(2); actTextos(cU, g, pf);
+        }
+
+        window.calcularDesdePrecio = function() {
+            let c = parseFloat(document.getElementById('costo_cop').value) || 0, pf = parseFloat(document.getElementById('precio_usd').value) || 0, t = tasas[document.getElementById('plat_venta').value] || 3200;
+            let cU = c / t, g = pf - cU; if(cU > 0) document.getElementById('margen').value = ((g / cU) * 100).toFixed(1); actTextos(cU, g, pf);
+        }
+
+        function actTextos(c, g, t) { document.getElementById('txt_debito').innerText = `$${c.toFixed(2)}`; document.getElementById('txt_ganancia').innerText = `$${g.toFixed(2)}`; document.getElementById('txt_cobro').innerText = `$${t.toFixed(2)}`; }
+
+        async function cargarSaldos() {
+            const { data } = await supabase.from('plataformas').select('*'); if(!data) return;
+            let platSel = "<option value=''>Selecciona...</option>";
+            document.getElementById("panel_saldos").innerHTML = data.map(p => {
+                tasas[p.nombre] = p.tasa_cambio; platSel += `<option value="${p.nombre}">${p.nombre}</option>`;
+                return `<div class="saldo-box"><h5>${p.nombre}</h5><small class="text-muted">Tasa: $${p.tasa_cambio}</small><h4 class="text-danger m-0">$${Math.round(p.saldo).toLocaleString()} COP</h4><small class="text-success fw-bold">≈ $${(p.saldo/p.tasa_cambio).toFixed(2)} USD</small></div>`;
+            }).join('');
+            document.getElementById('plat_venta').innerHTML = platSel; document.getElementById('sel_plat_gestion').innerHTML = platSel;
+        }
+
+        async function cargarVentas() {
+            const { data } = await supabase.from('ventas').select('*').order('fecha_vencimiento', { ascending: true });
+            if(!data) return; let tc = 0, tg = 0;
+            document.querySelector("#tablaVentas tbody").innerHTML = data.map(v => {
+                let cR = parseFloat(v.costo.toFixed(2)), gR = parseFloat(v.ganancia.toFixed(2)); tc += cR; tg += gR;
+                let dif = Math.ceil((new Date(v.fecha_vencimiento + "T00:00:00") - new Date()) / 86400000);
+                let sem = dif < 0 ? "gris" : (dif <= 2 ? "rojo" : (dif <= 5 ? "amarillo" : "verde"));
+                return `<tr><td class="text-center"><span class="semaforo ${sem}"></span></td><td>${v.cliente}</td><td>${v.producto}</td><td>${v.fecha_vencimiento}</td><td>${v.plataforma}</td><td>$${cR.toFixed(2)}</td><td><b>$${(cR+gR).toFixed(2)}</b></td><td class="text-success fw-bold">$${gR.toFixed(2)}</td><td><button class="btn btn-sm btn-outline-primary" onclick="prepararRenovacion('${v.cliente}', '${v.telefono}', '${v.producto}', '${v.plataforma}', ${v.costo}, ${v.tasa})">🔄</button> <button class="btn btn-sm btn-outline-danger" onclick="eliminarVenta(${v.id}, ${v.costo}, '${v.plataforma}')">🗑️</button></td></tr>`;
+            }).join('');
+            document.getElementById('total_costo').innerText = `$${tc.toFixed(2)}`; document.getElementById('total_ganancia').innerText = `$${tg.toFixed(2)}`;
+        }
+
+        window.guardarVenta = async function() {
+            let n=document.getElementById('nombre').value, p=document.getElementById('producto').value, c=parseFloat(document.getElementById('costo_cop').value), v=document.getElementById('vence').value, pl=document.getElementById('plat_venta').value;
+            if(!n || !p || isNaN(c) || !v || !pl) return alert("Completa los datos"); if(!confirm("¿Registrar venta?")) return;
+            let tasa = tasas[pl] || 3200, cUsd = c / tasa, gan = parseFloat(document.getElementById('txt_ganancia').innerText.replace('$',''));
+            await supabase.from('ventas').insert({ cliente: n, telefono: document.getElementById('telefono').value, producto: p, plataforma: pl, costo: cUsd, ganancia: gan, tasa: tasa, fecha_vencimiento: v });
+            await supabase.from('plataformas').update({ saldo: (await supabase.from('plataformas').select('saldo').eq('nombre', pl).single()).data.saldo - c }).eq('nombre', pl);
+            document.querySelectorAll('#tab-ventas input').forEach(i=>i.value=''); document.getElementById('margen').value='30'; actTextos(0,0,0);
+            alert("Venta registrada"); cargarTodoAdmin();
+        }
+
+        window.eliminarVenta = async function(id, cost, plat) {
+            if(!confirm(`¿Borrar registro?`)) return; let dev = confirm(`¿REEMBOLSAR saldo a ${plat}?`);
+            await supabase.from('ventas').delete().eq('id', id);
+            if(dev) await supabase.from('plataformas').update({ saldo: (await supabase.from('plataformas').select('saldo').eq('nombre', plat).single()).data.saldo + (cost*(tasas[plat]||3200)) }).eq('nombre', plat);
+            cargarTodoAdmin();
+        }
+
+        window.prepararRenovacion = function(c, t, p, pl, cU, tV) {
+            document.getElementById('nombre').value=c; document.getElementById('telefono').value=t; document.getElementById('producto').value=p; document.getElementById('plat_venta').value=pl;
+            document.getElementById('costo_cop').value=Math.round(cU*(tasas[pl]||tV||3200));
+            let f = new Date(); f.setDate(f.getDate()+30); document.getElementById('vence').value=f.toISOString().split('T')[0];
+            calcularDesdeMargen();
+        }
+
+        window.recargarSaldo = async function() {
+            let pl=document.getElementById('sel_plat_gestion').value, u=parseFloat(document.getElementById('input_usd').value), t=parseFloat(document.getElementById('input_tasa').value);
+            if(!pl || isNaN(u) || isNaN(t)) return alert("Datos inválidos"); let mCop = u*t;
+            let { data } = await supabase.from('plataformas').select('saldo').eq('nombre', pl).single();
+            if(data) await supabase.from('plataformas').update({ saldo: data.saldo+mCop, tasa_cambio: t }).eq('nombre', pl); else await supabase.from('plataformas').insert({ nombre: pl, saldo: mCop, tasa_cambio: t });
+            await supabase.from('recargas').insert({ plataforma: pl, usd: u, tasa: t, monto_cop: mCop });
+            document.getElementById('input_usd').value=''; document.getElementById('input_tasa').value=''; alert("Recargado"); cargarTodoAdmin();
+        }
+
+        async function cargarRecargas() {
+            const { data } = await supabase.from('recargas').select('*').order('created_at', { ascending: false }); if(!data) return;
+            document.querySelector("#tablaRecargas tbody").innerHTML = data.map(r => `<tr><td>${new Date(r.created_at).toLocaleDateString()}</td><td>${r.plataforma}</td><td><b>$${r.usd}</b></td><td>$${r.tasa}</td><td class="text-danger">$${Math.round(r.monto_cop).toLocaleString()}</td><td><button class="btn btn-sm btn-danger" onclick="eliminarRecarga(${r.id}, ${r.monto_cop}, '${r.plataforma}')">🗑️</button></td></tr>`).join('');
+        }
+
+        window.eliminarRecarga = async function(id, mCop, plat) {
+            if(!confirm(`¿Revertir recarga?`)) return;
+            await supabase.from('recargas').delete().eq('id', id);
+            await supabase.from('plataformas').update({ saldo: (await supabase.from('plataformas').select('saldo').eq('nombre', plat).single()).data.saldo - mCop }).eq('nombre', plat);
+            cargarTodoAdmin();
+        }
+
+        window.restablecerSaldoSeguro = async function() {
+            let pl = document.getElementById('sel_plat_gestion').value; if(!pl) return alert("Selecciona una plataforma primero");
+            if(confirm(`🚨 ¿Estás completamente seguro de poner a $0 el saldo de ${pl}?`)) {
+                await supabase.from('plataformas').upsert({ nombre: pl, saldo: 0, tasa_cambio: tasas[pl] || 3200 }, { onConflict: 'nombre' });
+                alert("Restablecido"); cargarTodoAdmin();
+            }
+        }
+
+        cargarCatalogoPublico();
     </script>
 </body>
 </html>
